@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Firetube – Throne and Liberty Guides</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <img src="/logo.png" alt="Firetube Logo" class="hero-logo">
+      <h1 class="site-title">Firetube</h1>
+      <p class="site-tagline">Throne and Liberty Guides</p>
+
+      <div class="cta-row">
+        <a class="btn" href="https://youtube.com" target="_blank">📺 Zum YouTube-Kanal</a>
+        <a class="btn btn-outline" href="https://discord.gg" target="_blank">💬 Join Discord</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav class="topnav">
+    <a href="/">Home</a>
+    <a href="/guides">Guides</a>
+    <a href="https://youtube.com" target="_blank">YouTube</a>
+    <a href="https://discord.gg" target="_blank">Discord</a>
+    <a href="/about">Über mich</a>
+  </nav>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © 2025 Firetube – Alle Rechte vorbehalten.
+    </div>
+  </footer>
+</body>
+</html>
