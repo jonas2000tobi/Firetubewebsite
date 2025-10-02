@@ -1,34 +1,35 @@
 from flask import Flask, render_template
+
 app = Flask(__name__)
 
 @app.route("/")
 def home():
     return render_template("index.html")
 
-# Platzhalter-Routen – du kannst später echte Seiten bauen
+# Platzhalter-Routen, damit die Menüpunkte anklickbar sind
 @app.route("/guides")
 def guides():
-    return "<h1>Guides</h1>"
+    return render_template("index.html")
 
 @app.route("/builds")
 def builds():
-    return "<h1>Builds</h1>"
+    return render_template("index.html")
 
 @app.route("/klassen")
 def klassen():
-    return "<h1>Klassen</h1>"
+    return render_template("index.html")
 
 @app.route("/welt")
 def welt():
-    return "<h1>Welt</h1>"
+    return render_template("index.html")
 
 @app.route("/tipps")
 def tipps():
-    return "<h1>Tipps & Tricks</h1>"
+    return render_template("index.html")
 
-@app.route("/ueber-mich")
+@app.route("/about")
 def about():
-    return "<h1>Über mich</h1>"
+    return render_template("index.html")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080)
+    app.run(debug=True, host="0.0.0.0", port=8080)
