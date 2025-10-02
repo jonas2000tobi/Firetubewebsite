@@ -1,0 +1,26 @@
+/* same CSS as earlier but paths via url_for in HTML */ 
+:root{
+  --bg:#0c0f12; --panel:#0f1318; --text:#eef2f6; --muted:#c2ceda;
+  --gold:#e1c58a; --line: rgba(255,255,255,.08); --shadow:0 30px 60px rgba(0,0,0,.55);
+}
+*{box-sizing:border-box} html,body{height:100%}
+body{margin:0;font-family:Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;color:var(--text);background:var(--bg)}
+.container{width:min(1200px,92vw);margin-inline:auto}
+.topbar{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(2,4,6,.8),rgba(2,4,6,.35));backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.menu{display:flex;gap:28px}
+.menu a{color:#d9e2ec;text-decoration:none;font-weight:600;opacity:.85}.menu a.active,.menu a:hover{opacity:1}
+.btn{display:inline-flex;gap:10px;align-items:center;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:12px;border:1px solid transparent}
+.btn img{width:18px;height:18px}.btn-discord{background:#0f1a24;border-color:#1e2a36}.btn-gold{background:linear-gradient(180deg,var(--gold),#f2dca7);color:#13110d}.btn-dark{background:#0d1116;border:1px solid rgba(255,255,255,.12);color:var(--text)}
+.hero{position:relative;min-height:64vh;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);background: radial-gradient(ellipse at center, rgba(255,255,255,.06), rgba(0,0,0,.86) 60%), url('../static/assets/hero_bg.jpg') center/cover no-repeat fixed;}
+.hero-inner{text-align:center;padding:72px 0}
+.title{font-family:Cinzel,serif;font-weight:700;letter-spacing:.08em;font-size:clamp(42px,7vw,86px);margin:0;color:var(--gold);text-shadow:0 8px 40px rgba(0,0,0,.85)}
+.subtitle{font-family:Cinzel,serif;font-size:clamp(18px,2.6vw,30px);letter-spacing:.25em;margin:.3em 0 0;color:#e8efe9}
+.lead{color:#d8e2ee;margin:22px auto 26px;font-size:clamp(16px,1.8vw,20px)}
+.hero-cta{display:flex;gap:14px;justify-content:center}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:36px auto 60px}
+.card{background:linear-gradient(180deg,rgba(18,22,27,.92),rgba(10,12,14,.92));border:1px solid var(--line);border-radius:16px;padding:26px;text-align:center;box-shadow:var(--shadow)}
+.card-icon{display:flex;justify-content:center;margin-bottom:12px}.card-icon img{width:40px;height:40px;opacity:.9}
+.card h3{font-family:Cinzel,serif;margin:6px 0 8px;color:var(--gold)}.card p{color:#c9d4df;margin:0}
+.card:hover{transform:translateY(-3px);transition:.2s ease;box-shadow:0 20px 60px rgba(0,0,0,.65)}
+@media (max-width:960px){.features{grid-template-columns:1fr}}
