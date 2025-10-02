@@ -23,9 +23,11 @@ body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color
 
 /* Hero */
 .hero{
-  position:relative;min-height:64vh;display:flex;align-items:center;justify-content:center;
+  position:relative;
+  min-height:64vh;
+  display:flex;align-items:center;justify-content:center;
   border-bottom:1px solid var(--line);
-  /* Hintergrundbild kommt inline im Template über url_for */
+  /* Hintergrundbild kommt inline im HTML (index.html) */
 }
 .hero-inner{text-align:center;padding:72px 0}
 .title{font-family:Cinzel,serif;font-weight:700;letter-spacing:.08em;font-size:clamp(42px,7vw,86px);margin:0;color:var(--gold);text-shadow:0 8px 40px rgba(0,0,0,.85)}
