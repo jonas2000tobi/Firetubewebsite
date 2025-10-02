@@ -1,53 +1,52 @@
-from flask import Flask, render_template, url_for
-import os, json
+from flask import Flask, render_template, send_from_directory, jsonify
+import json
+import os
 
-app = Flask(__name__)
+# Flask sagen: Templates und Static liegen im Root
+app = Flask(
+    __name__,
+    template_folder=".",   # HTML-Dateien liegen direkt im Root
+    static_folder="."      # CSS/JS auch im Root
+)
 
-# --- Config ---
-CHANNEL_NAME = os.getenv("CHANNEL_NAME", "Firetube")
-TAGLINE = os.getenv("TAGLINE", "Throne and Liberty Guides")
-YOUTUBE_URL = os.getenv("YOUTUBE_URL", "https://youtube.com")
-DISCORD_URL = os.getenv("DISCORD_URL", "https://discord.gg/yourinvite")
-TWITTER_URL = os.getenv("TWITTER_URL", "")
-TIKTOK_URL = os.getenv("TIKTOK_URL", "")
-
-# Load demo guides
+# Dummy-Daten aus guides.json laden
 def load_guides():
-    path = os.path.join(os.path.dirname(__file__), "guides.json")
     try:
-        with open(path, "r", encoding="utf-8") as f:
+        with open("guides.json", "r", encoding="utf-8") as f:
             return json.load(f)
-    except Exception:
+    except Exception as e:
+        print("Fehler beim Laden von guides.json:", e)
         return []
-
-@app.context_processor
-def inject_globals():
-    return dict(
-        CHANNEL_NAME=CHANNEL_NAME,
-        TAGLINE=TAGLINE,
-        YOUTUBE_URL=YOUTUBE_URL,
-        DISCORD_URL=DISCORD_URL,
-        TWITTER_URL=TWITTER_URL,
-        TIKTOK_URL=TIKTOK_URL
-    )
 
 @app.route("/")
 def index():
-    guides = load_guides()[:6]
-    return render_template("index.html", guides=guides)
+    guides = load_guides()
+    return render_template("index.html", guides=guides,
+                           CHANNEL_NAME=os.getenv("CHANNEL_NAME", "Firetube"),
+                           TAGLINE=os.getenv("TAGLINE", "Throne and Liberty Guides"))
 
 @app.route("/guides")
 def guides():
     guides = load_guides()
-    return render_template("guides.html", guides=guides)
+    return render_template("guides.html", guides=guides,
+                           CHANNEL_NAME=os.getenv("CHANNEL_NAME", "Firetube"),
+                           TAGLINE=os.getenv("TAGLINE", "Throne and Liberty Guides"))
 
 @app.route("/about")
 def about():
-    return render_template("about.html")
+    return render_template("about.html",
+                           CHANNEL_NAME=os.getenv("CHANNEL_NAME", "Firetube"),
+                           TAGLINE=os.getenv("TAGLINE", "Throne and Liberty Guides"))
 
+@app.route("/api/guides")
+def api_guides():
+    return jsonify(load_guides())
+
+# Healthcheck für Railway
 @app.route("/health")
 def health():
     return "ok", 200
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.getenv("PORT", 5000)))
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
