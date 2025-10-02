@@ -1,86 +1,86 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Firetube – Throne and Liberty Guides</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <!-- Logo -->
-        <<img
-  src="{{ url_for('static', filename='file_00000000173061f4b2d1c7ce0375a4e7.png') }}"
-  alt="Firetube Logo"
-  class="hero-logo"
-/>
+{% extends "base.html" %}
+{% block content %}
 
+<section class="section">
+  <h3 class="section-title">Neueste Guides</h3>
 
-        <!-- Titel -->
-        <h1 class="hero-title">Firetube</h1>
-        <h2 class="hero-subtitle">Firetube's Guides</h2>
+  <div class="cards">
+    <!-- Karte 1 -->
+    <article class="card">
+      <div class="card-media">
+        <img
+          class="card-img"
+          src="{{ url_for('static', filename='file_00000008bc462468744e274d0707fc1.png') }}"
+          alt="Heiler PvP Build – Tanky Mage"
+          loading="lazy"
+        />
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">Heiler PvP Build – Tanky Mage</h4>
+        <p class="card-text">
+          Skillung, Gear und Rotation für maximale Überlebenszeit und Druck.
+        </p>
+        <a class="btn btn-primary btn-sm" href="#">Ansehen</a>
+      </div>
+    </article>
 
-        <!-- Buttons -->
-        <div class="hero-buttons">
-            <a href="https://www.youtube.com/" target="_blank" class="btn">Zum YouTube-Kanal</a>
-            <a href="https://discord.com/" target="_blank" class="btn">Join Discord</a>
-        </div>
+    <!-- Karte 2 (mittig, leicht erhöht) -->
+    <article class="card card-featured">
+      <div class="card-media">
+        <img
+          class="card-img"
+          src="{{ url_for('static', filename='file_000000075946243bcc927f04da6365e.png') }}"
+          alt="Schnell Leveln 1–50"
+          loading="lazy"
+        />
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">Schnell Leveln 1–50</h4>
+        <p class="card-text">
+          Optimale Routen, Events & Daily-Routine für Solo und Gruppe.
+        </p>
+        <a class="btn btn-primary btn-sm" href="#">Ansehen</a>
+      </div>
+    </article>
 
-        <!-- Navigation -->
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Guides</a>
-            <a href="#">YouTube</a>
-            <a href="#">Discord</a>
-            <a href="#">Über mich</a>
-        </nav>
-    </header>
+    <!-- Karte 3 -->
+    <article class="card">
+      <div class="card-media">
+        <img
+          class="card-img"
+          src="{{ url_for('static', filename='file_0000000c43062438b63eef1b4d32e42.png') }}"
+          alt="Einsteigerguide 2025"
+          loading="lazy"
+        />
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">Einsteigerguide 2025</h4>
+        <p class="card-text">
+          Alles Wichtige in 15 Minuten: Klassen, Stats, Progression.
+        </p>
+        <a class="btn btn-primary btn-sm" href="#">Ansehen</a>
+      </div>
+    </article>
+  </div>
+</section>
 
-    <main>
-        <!-- Guide Section -->
-        <section class="guides">
-            <h2>Neueste Guides</h2>
-            <div class="guide-grid">
-                <div class="guide-card">
-                    <img src="{{ url_for('static', filename='file_0000000017306f14b2d1c7e03754ae7.png') }}" alt="Heiler PvP Build">
-                    <h3>Heiler PvP Build – Tanky Mage</h3>
-                    <p>Skilling, Gear und Rotation für maximale Überlebenszeit und Druck.</p>
-                    <a href="#" class="btn-orange">Ansehen</a>
-                </div>
-                <div class="guide-card">
-                    <img src="{{ url_for('static', filename='file_0000000075946243bcc927f04da6365e.png') }}" alt="Level Guide">
-                    <h3>Schnell Leveln 1–50</h3>
-                    <p>Optimale Routen, Events & Daily-Routine für Solo und Gruppe.</p>
-                    <a href="#" class="btn-orange">Ansehen</a>
-                </div>
-                <div class="guide-card">
-                    <img src="{{ url_for('static', filename='file_00000000c43062438b63eef1b4d32e42.png') }}" alt="Einsteiger Guide">
-                    <h3>Einsteigerguide 2025</h3>
-                    <p>Alles Wichtige in 15 Minuten: Klassen, Stats, Progression.</p>
-                    <a href="#" class="btn-orange">Ansehen</a>
-                </div>
-            </div>
-        </section>
+<!-- Über + Community (unter dem Grid) -->
+<section class="section section-split">
+  <div class="split-box">
+    <h3 class="section-title">Über Firetube</h3>
+    <p class="muted">
+      Ich bin Jonas – Chemikant, Gamer und Content-Creator. Auf Firetube bekommst du kompakte
+      <strong>Throne and Liberty</strong>-Guides, klare Builds und Strategien.
+    </p>
+  </div>
+  <div class="split-box">
+    <h3 class="section-title">Tritt der Firetube-Community bei</h3>
+    <p class="muted">Builds teilen, Gruppen finden, News zuerst sehen.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://discord.gg" target="_blank" rel="noopener">Discord beitreten</a>
+      <a class="btn btn-ghost" href="#" aria-disabled="true">Platz für Eigenwerbung</a>
+    </div>
+  </div>
+</section>
 
-        <!-- Über Firetube -->
-        <section class="about">
-            <h2>Über Firetube</h2>
-            <p>Ich bin Jonas – Chemikant, Gamer und Content-Creator. 
-            Hier bekommst du kompakte <b>Throne and Liberty</b>-Guides, klare Builds und Strategien.</p>
-        </section>
-
-        <!-- Community -->
-        <section class="community">
-            <h2>Trete der Firetube-Community bei</h2>
-            <p>Builds teilen, Gruppen finden, News zuerst sehen.</p>
-            <a href="#" class="btn">Discord beitreten</a>
-            <a href="#" class="btn">Platz für Eigenwerbung</a>
-        </section>
-    </main>
-
-    <footer>
-        <p>© 2025 Firetube – Alle Rechte vorbehalten.</p>
-    </footer>
-</body>
-</html>
+{% endblock %}
