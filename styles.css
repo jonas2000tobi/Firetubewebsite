@@ -1,54 +1,55 @@
-:root{
-  --bg:#0f0f11; --bg-2:#151518; --card:#1a1b1f;
-  --text:#e9e9ea; --muted:#b7b7bd;
-  --accent:#ff7a18; --accent-2:#ffb757; --border:#2a2b31;
-}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial}
-a{color:var(--accent-2);text-decoration:none}
-a:hover{color:var(--accent)}
-.container{max-width:1160px;margin:0 auto;padding:0 18px}
-
-/* ---------- Guides Desktop ---------- */
+/* --- Karten (Desktop wie gehabt) --- */
 .guide-grid{
   display:grid;
-  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, minmax(260px, 1fr)); /* PC bleibt */
   gap:24px;
   align-items:start;
   max-width:1160px;
   margin:0 auto;
 }
 .card{
-  background:var(--card);
-  border:1px solid var(--border);
+  background:#1a1b1f;
+  border:1px solid #2a2b31;
   border-radius:14px;
   overflow:hidden;
   box-shadow:0 10px 24px rgba(0,0,0,.28);
 }
-.card--middle{ transform: translateY(-10px); }
+.card--middle{ transform: translateY(-10px); } /* nur PC */
+
+/* Thumbnails */
 .thumb{
   display:block;
   width:100%;
   aspect-ratio:16/9;
   object-fit:cover;
-  background:#23242a;
-  border-bottom:1px solid var(--border);
+  border-bottom:1px solid #2a2b31;
 }
+/* Schöner Platzhalter (falls kein Bild da ist) */
+.thumb--ph{
+  background: radial-gradient(60% 80% at 50% 40%, #2a2b31 0%, #1e1f25 60%, #191a20 100%);
+}
+
+/* Inhalt der Karten */
 .card-body{ padding:14px }
 .card-title{ margin:6px 0 6px; font-size:18px }
-.card-text{ margin:0 0 10px; color:var(--muted); font-size:14px }
+.card-text{ margin:0 0 10px; color:#b7b7bd; font-size:14px }
+.btn{ background:linear-gradient(135deg,#ff7a18,#ff6a00); color:#111; font-weight:700; padding:8px 12px; border-radius:8px; display:inline-block; text-decoration:none }
+.btn-small{ padding:7px 11px }
 
-/* ---------- Responsive: Mobile/Tablet ---------- */
+/* --- MOBILE/TABLET – wie in deinem Screenshot --- */
 @media (max-width: 980px){
   .guide-grid{
-    grid-template-columns: 1fr; /* alles untereinander */
-    gap:18px;
+    grid-template-columns: 1fr;  /* untereinander */
+    gap:16px;
   }
   .card{
-    max-width:680px;
-    margin:0 auto;
+    max-width: 680px;
+    margin: 0 auto;
   }
   .card--middle{
-    transform:none; /* Hochsprung nur am PC */
+    transform:none; /* kein Hochsprung auf Mobile */
   }
+  /* etwas kompakter auf Handy */
+  .card-title{ font-size:17px }
+  .card-text{ font-size:13.5px }
 }
