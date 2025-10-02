@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ CHANNEL_NAME }} – {{ TAGLINE }}</title>
+  <meta name="description" content="Guides, Builds und Tipps für Throne and Liberty.">
+  <meta property="og:title" content="{{ CHANNEL_NAME }} – {{ TAGLINE }}">
+  <meta property="og:description" content="Guides, Builds und Tipps für Throne and Liberty.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}">
+</head>
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="/"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Firetube Logo"> {{ CHANNEL_NAME }}</a>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/guides">Guides</a></li>
+        <li><a href="{{ YOUTUBE_URL }}" target="_blank">YouTube</a></li>
+        <li><a href="{{ DISCORD_URL }}" target="_blank">Discord</a></li>
+        <li><a href="/about">Über mich</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  {% block content %}{% endblock %}
+
+  <footer>
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+      <div>© {{ CHANNEL_NAME }} {{ 2025 }}</div>
+      <div class="socials">
+        {% if TWITTER_URL %}<a href="{{ TWITTER_URL }}" target="_blank">Twitter</a>{% endif %}
+        {% if TIKTOK_URL %}<a href="{{ TIKTOK_URL }}" target="_blank">TikTok</a>{% endif %}
+        <a href="/about">Impressum/Datenschutz (Platzhalter)</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
