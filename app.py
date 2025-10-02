@@ -1,15 +1,13 @@
-from flask import Flask, render_template, send_from_directory, jsonify
+from flask import Flask, render_template, jsonify
 import json
 import os
 
-# Flask sagen: Templates und Static liegen im Root
 app = Flask(
     __name__,
-    template_folder=".",   # HTML-Dateien liegen direkt im Root
-    static_folder="."      # CSS/JS auch im Root
+    template_folder=".",   # HTML im Root
+    static_folder="."      # CSS/Bilder auch im Root
 )
 
-# Dummy-Daten aus guides.json laden
 def load_guides():
     try:
         with open("guides.json", "r", encoding="utf-8") as f:
@@ -42,7 +40,6 @@ def about():
 def api_guides():
     return jsonify(load_guides())
 
-# Healthcheck für Railway
 @app.route("/health")
 def health():
     return "ok", 200
