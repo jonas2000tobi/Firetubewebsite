@@ -1,11 +1,11 @@
 from flask import Flask, render_template
 
-# ALLES aus dem Repo-Root laden (HTML, CSS, Bilder)
+# alles aus dem Repo-Root laden (deine Wahl ohne Ordnerstruktur)
 app = Flask(
     __name__,
-    template_folder=".",   # <-- HTML liegt im Root
-    static_folder=".",     # <-- CSS/Images auch im Root
-    static_url_path=""     # <-- erreichbar direkt unter /styles.css, /logo.png
+    template_folder=".",   # HTML liegt im Root
+    static_folder=".",     # CSS/Bilder auch im Root
+    static_url_path=""     # erreichbar unter /styles.css, /logo.png, /guide1.jpg ...
 )
 
 @app.route("/")
