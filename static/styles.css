@@ -1,78 +1,67 @@
-/* ===== Theme / Base ===== */
-:root{
-  --bg:#0f0f11; --bg2:#151518; --card:#1a1b1f;
-  --text:#e9e9ea; --muted:#b7b7bd;
-  --accent:#ff7a18; --accent2:#ffb757; --border:#2a2b31;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #111;
+    color: #eee;
+    text-align: center;
 }
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial}
-a{color:var(--accent2);text-decoration:none}
-a:hover{color:var(--accent)}
-.container{max-width:1160px;margin:0 auto;padding:0 18px}
 
-/* ===== Hero ===== */
-.hero{background:linear-gradient(180deg,#121215 0%,#0f0f11 100%);border-bottom:1px solid var(--border)}
-.hero-inner{max-width:940px;margin:0 auto;padding:36px 18px 28px;text-align:center}
-.hero-logo{width:96px;height:auto;display:block;margin:0 auto 8px}
-.site-title{font-size: clamp(34px,5.2vw,56px);margin:0;color:var(--accent)}
-.site-tagline{margin:6px 0 14px;color:var(--accent2);font-size:clamp(14px,2.2vw,18px)}
-.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-
-/* ===== Navigation ===== */
-.topnav{display:flex;gap:18px;justify-content:center;border-bottom:1px solid var(--border);background:#121216;padding:12px 10px;position:sticky;top:0;z-index:10}
-
-/* ===== Buttons ===== */
-.btn{background:linear-gradient(135deg,var(--accent),#ff6a00);color:#111;font-weight:700;padding:10px 14px;border-radius:10px;border:1px solid #000;box-shadow:0 6px 18px rgba(0,0,0,.35)}
-.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
-.btn-small{padding:8px 12px;border-radius:8px}
-
-/* ===== Trenner / Sektionen ===== */
-.section-divider{border-top:1px solid var(--border)}
-.section-title{margin:22px 0 18px;text-align:center;font-size:clamp(22px,3.2vw,28px);color:var(--accent)}
-
-/* ===== Guides: PC = 3 nebeneinander ===== */
-.guide-grid{
-  display:grid;
-  grid-template-columns: repeat(3, minmax(260px, 1fr));
-  gap:24px; align-items:start;
+header {
+    padding: 20px;
 }
-.card{
-  background:var(--card);
-  border:1px solid #3a3b42;       /* klare Rahmen */
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 8px 20px rgba(0,0,0,.25);
-}
-.card--middle{ transform: translateY(-10px); } /* mittlere leicht höher */
 
-/* Bild oben, Text unten */
-.card-thumb{
-  display:block; width:100%;
-  aspect-ratio:16/9; object-fit:cover;
-  background:#23242a;
-  border-bottom:1px solid #3a3b42;
+nav a {
+    margin: 0 10px;
+    color: orange;
+    text-decoration: none;
 }
-.card-meta{ padding:14px }
-.card-title{ margin:6px 0 6px; font-size:18px }
-.card-text{ margin:0 0 12px; color:var(--muted); font-size:14px }
 
-/* ===== Untere Zweispalter-Sektion ===== */
-.two-col{
-  display:grid; grid-template-columns: 1.1fr .9fr; gap:20px; padding:22px 0;
+.btn {
+    background: #333;
+    color: #fff;
+    padding: 8px 12px;
+    margin: 5px;
+    border-radius: 5px;
+    text-decoration: none;
 }
-.panel{
-  background:var(--card);
-  border:1px solid #3a3b42;
-  border-radius:12px; padding:16px;
-}
-.panel-title{ margin:0 0 12px; font-size: clamp(20px,3vw,24px) }
-.about-row{ display:flex; gap:12px; align-items:flex-start }
-.avatar{ width:56px; height:56px; border-radius:50%; background:#23242a; border:1px solid #3a3b42 }
 
-/* ===== Responsive: Mobile/Tablet – stapelt sauber, kein Hochsprung ===== */
-@media (max-width: 980px){
-  .guide-grid{ grid-template-columns: 1fr; gap:16px; }
-  .card{ max-width: 700px; margin: 0 auto; }
-  .card--middle{ transform:none; }
-  .two-col{ grid-template-columns: 1fr; }
+.btn-orange {
+    background: orange;
+    color: black;
+    padding: 8px 12px;
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.guides {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px auto;
+    flex-wrap: wrap;
+}
+
+.guide-card {
+    background: #222;
+    padding: 15px;
+    border-radius: 10px;
+    width: 250px;
+    text-align: center;
+}
+
+.guide-card img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.guide-card.middle {
+    margin-top: -20px; /* mittlere Karte leicht höher */
+}
+
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    background: #1a1a1a;
 }
