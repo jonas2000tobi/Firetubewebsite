@@ -1,11 +1,12 @@
-from flask import Flask, render_template, jsonify
-import json
-import os
+from flask import Flask, render_template, jsonify, url_for
+import json, os
 
+# Wichtig: static_url_path=""  -> /styles.css, /logo.png, /guide1.jpg funktionieren
 app = Flask(
     __name__,
-    template_folder=".",   # HTML im Root
-    static_folder="."      # CSS/Bilder auch im Root
+    template_folder=".",    # HTML im Root
+    static_folder=".",      # statische Dateien im Root
+    static_url_path=""      # serve statics direkt unter "/"
 )
 
 def load_guides():
