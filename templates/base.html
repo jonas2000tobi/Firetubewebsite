@@ -4,9 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}WEISSE FLAMME{% endblock %}</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
   <link rel="icon" href="{{ url_for('static', filename='assets/logo.png') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
@@ -21,10 +23,12 @@
         <a href="{{ url_for('about') }}">Über uns</a>
       </nav>
       <a class="btn btn-discord" href="#discord">
-        <img src="{{ url_for('static', filename='assets/icon_discord.svg') }}" alt="" aria-hidden="true"><span>Zum Discord</span>
+        <img src="{{ url_for('static', filename='assets/icon_discord.svg') }}" alt="" aria-hidden="true">
+        <span>Zum Discord</span>
       </a>
     </div>
   </header>
+
   {% block content %}{% endblock %}
 </body>
 </html>
