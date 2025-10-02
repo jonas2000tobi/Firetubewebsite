@@ -1,33 +1,61 @@
 {% extends "base.html" %}
-
 {% block content %}
-<h2>Neueste Guides</h2>
 
-<div class="guide-card">
-    <img src="/guide1.png" alt="Heiler PvP Build – Tanky Mage">
-    <h3>Heiler PvP Build – Tanky Mage</h3>
-    <p>Skillung, Gear und Rotation für maximale Überlebenszeit und Druck.</p>
-    <a class="button" href="/guides#heilerpvp">Ansehen</a>
-</div>
+  <!-- SECTION: Neueste Guides -->
+  <section>
+    <h2 class="section-title">Neueste Guides</h2>
+    <div class="guide-grid">
+      <!-- Karte 1 -->
+      <article class="card">
+        <div class="thumb"></div>
+        <div class="card-body">
+          <h3 class="card-title">Heiler Build für PvP</h3>
+          <p class="card-text">Kurz, knackig: Skills, Gear, Rotation.</p>
+          <a class="btn btn-small" href="/guides#heiler">Ansehen</a>
+        </div>
+      </article>
+      <!-- Karte 2 -->
+      <article class="card">
+        <div class="thumb"></div>
+        <div class="card-body">
+          <h3 class="card-title">Level-Route 1–50</h3>
+          <p class="card-text">Schnellleveln: Routen, Events, Dailies.</p>
+          <a class="btn btn-small" href="/guides#leveln">Ansehen</a>
+        </div>
+      </article>
+      <!-- Karte 3 -->
+      <article class="card">
+        <div class="thumb"></div>
+        <div class="card-body">
+          <h3 class="card-title">Einsteigerguide</h3>
+          <p class="card-text">Klassen, Stats, Progression in 15 Min.</p>
+          <a class="btn btn-small" href="/guides#start">Ansehen</a>
+        </div>
+      </article>
+    </div>
+  </section>
 
-<div class="guide-card">
-    <img src="/guide2.png" alt="Schnell Leveln 1–50">
-    <h3>Schnell Leveln 1–50</h3>
-    <p>Optimale Routen, Events & Daily-Routine für Solo und Gruppe.</p>
-    <a class="button" href="/guides#leveln">Ansehen</a>
-</div>
+  <!-- SECTION: Zweispalter -->
+  <section class="two-col">
+    <!-- Über Firetube -->
+    <div class="box">
+      <h2 class="section-title">Über Firetube</h2>
+      <div class="about-row">
+        <div class="avatar"></div>
+        <p>Ich bin Jonas – Chemikant, Gamer und Content-Creator. Hier findest du klare
+        <strong>Throne and Liberty</strong>-Guides, Builds und Strategien – ohne Bullshit.</p>
+      </div>
+    </div>
 
-<div class="guide-card">
-    <img src="/guide3.png" alt="Einsteigerguide 2025">
-    <h3>Einsteigerguide 2025</h3>
-    <p>Alles Wichtige in 15 Minuten: Klassen, Stats, Progression.</p>
-    <a class="button" href="/guides#einsteiger">Ansehen</a>
-</div>
+    <!-- Community / Werbung -->
+    <div class="box">
+      <h2 class="section-title">Trete der Community bei</h2>
+      <p>Builds teilen, Gruppen finden, News zuerst bekommen.</p>
+      <div class="cta-row">
+        <a class="btn" href="https://discord.gg" target="_blank">Discord beitreten</a>
+        <a class="btn btn-outline" href="#" target="_blank">Platz für Eigenwerbung</a>
+      </div>
+    </div>
+  </section>
 
-<section class="about">
-    <h2>Über Firetube</h2>
-    <p>Ich bin Jonas – Chemikant, Gamer und Content-Creator.
-       Auf Firetube bekommst du kompakte Throne and Liberty Guides,
-       Tipps für Builds und Strategien.</p>
-</section>
 {% endblock %}
