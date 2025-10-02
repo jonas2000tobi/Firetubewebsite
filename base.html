@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ CHANNEL_NAME }} – {{ TAGLINE }}</title>
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
   <header>
-    <img src="/logo.png" alt="Firetube Logo" class="logo">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Firetube Logo" class="logo">
     <h1>{{ CHANNEL_NAME }}</h1>
     <p>{{ TAGLINE }}</p>
   </header>
