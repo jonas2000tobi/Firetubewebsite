@@ -21,14 +21,8 @@ body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color
 .btn-gold{background:linear-gradient(180deg,var(--gold),#f2dca7);color:#13110d}
 .btn-dark{background:#0d1116;border:1px solid rgba(255,255,255,.12);color:var(--text)}
 
-/* Hero */
-.hero{
-  position:relative;
-  min-height:64vh;
-  display:flex;align-items:center;justify-content:center;
-  border-bottom:1px solid var(--line);
-  /* Hintergrundbild kommt inline im HTML (index.html) */
-}
+/* Hero – Bild kommt inline aus index.html */
+.hero{position:relative;min-height:64vh;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line)}
 .hero-inner{text-align:center;padding:72px 0}
 .title{font-family:Cinzel,serif;font-weight:700;letter-spacing:.08em;font-size:clamp(42px,7vw,86px);margin:0;color:var(--gold);text-shadow:0 8px 40px rgba(0,0,0,.85)}
 .subtitle{font-family:Cinzel,serif;font-size:clamp(18px,2.6vw,30px);letter-spacing:.25em;margin:.3em 0 0;color:#e8efe9}
@@ -45,7 +39,6 @@ body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color
 .card p{color:#c9d4df;margin:0}
 .card:hover{transform:translateY(-3px);transition:.2s ease;box-shadow:0 20px 60px rgba(0,0,0,.65)}
 
-/* Responsive */
 @media (max-width:960px){
   .features{grid-template-columns:1fr}
 }
