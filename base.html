@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Firetube – Throne and Liberty Guides</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <header>
-    <img src="/logo.png" alt="Firetube Logo" class="logo">
-    <h1 class="channel-name">Firetube</h1>
-    <p class="tagline">Throne and Liberty Guides</p>
-    <div class="hero-buttons">
-      <a href="https://youtube.com" target="_blank" class="btn">Zum YouTube-Kanal</a>
-      <a href="https://discord.gg" target="_blank" class="btn">Join Discord</a>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <img src="/logo.png" alt="Firetube Logo" class="hero-logo">
+      <h1 class="site-title">Firetube</h1>
+      <p class="site-tagline">Throne and Liberty Guides</p>
+
+      <div class="cta-row">
+        <a class="btn" href="https://youtube.com" target="_blank">📺 Zum YouTube-Kanal</a>
+        <a class="btn btn-outline" href="https://discord.gg" target="_blank">💬 Join Discord</a>
+      </div>
     </div>
   </header>
 
-  <nav>
+  <!-- NAV -->
+  <nav class="topnav">
     <a href="/">Home</a>
     <a href="/guides">Guides</a>
     <a href="https://youtube.com" target="_blank">YouTube</a>
@@ -29,8 +35,10 @@
     {% block content %}{% endblock %}
   </main>
 
-  <footer>
-    <p>© 2025 Firetube – Alle Rechte vorbehalten.</p>
+  <footer class="footer">
+    <div class="container">
+      © 2025 Firetube – Alle Rechte vorbehalten.
+    </div>
   </footer>
 </body>
 </html>
