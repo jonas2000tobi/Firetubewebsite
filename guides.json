@@ -2,19 +2,19 @@
   {
     "title": "Heiler PvP Build – Tanky Mage",
     "summary": "Skillung, Gear und Rotation für maximale Überlebenszeit und Druck.",
-    "thumb": "img/guide1.jpg",
-    "url": "https://youtube.com/yourvideo1"
+    "url": "https://youtube.com/watch?v=DEIN_VIDEO",
+    "image": "/guide1.jpg"
   },
   {
     "title": "Schnell Leveln 1–50",
     "summary": "Optimale Routen, Events & Daily-Routine für Solo und Gruppe.",
-    "thumb": "img/guide2.jpg",
-    "url": "https://youtube.com/yourvideo2"
+    "url": "https://youtube.com/watch?v=DEIN_VIDEO2",
+    "image": "/guide2.jpg"
   },
   {
     "title": "Einsteigerguide 2025",
     "summary": "Alles Wichtige in 15 Minuten: Klassen, Stats, Progression.",
-    "thumb": "img/guide3.jpg",
-    "url": "https://youtube.com/yourvideo3"
+    "url": "https://youtube.com/watch?v=DEIN_VIDEO3",
+    "image": "/guide3.jpg"
   }
 ]
