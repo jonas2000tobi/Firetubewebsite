@@ -1,50 +1,18 @@
-from flask import Flask, render_template, jsonify, url_for
-import json, os
+from flask import Flask, render_template
 
-# Wichtig: static_url_path=""  -> /styles.css, /logo.png, /guide1.jpg funktionieren
-app = Flask(
-    __name__,
-    template_folder=".",    # HTML im Root
-    static_folder=".",      # statische Dateien im Root
-    static_url_path=""      # serve statics direkt unter "/"
-)
-
-def load_guides():
-    try:
-        with open("guides.json", "r", encoding="utf-8") as f:
-            return json.load(f)
-    except Exception as e:
-        print("Fehler beim Laden von guides.json:", e)
-        return []
+app = Flask(__name__)
 
 @app.route("/")
-def index():
-    guides = load_guides()
-    return render_template("index.html", guides=guides,
-                           CHANNEL_NAME=os.getenv("CHANNEL_NAME", "Firetube"),
-                           TAGLINE=os.getenv("TAGLINE", "Throne and Liberty Guides"))
+def home():
+    return render_template("index.html")
 
 @app.route("/guides")
 def guides():
-    guides = load_guides()
-    return render_template("guides.html", guides=guides,
-                           CHANNEL_NAME=os.getenv("CHANNEL_NAME", "Firetube"),
-                           TAGLINE=os.getenv("TAGLINE", "Throne and Liberty Guides"))
+    return render_template("guides.html")
 
 @app.route("/about")
 def about():
-    return render_template("about.html",
-                           CHANNEL_NAME=os.getenv("CHANNEL_NAME", "Firetube"),
-                           TAGLINE=os.getenv("TAGLINE", "Throne and Liberty Guides"))
-
-@app.route("/api/guides")
-def api_guides():
-    return jsonify(load_guides())
-
-@app.route("/health")
-def health():
-    return "ok", 200
+    return render_template("about.html")
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8080))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=8080)
