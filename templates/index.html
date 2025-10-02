@@ -7,50 +7,54 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <!-- Hero Bereich -->
+    <!-- Header mit großem Fantasy-Bild -->
     <header class="hero">
-        <div class="hero-frame">
-            <img src="{{ url_for('static', filename='file_00000000173061f4b2d1c7ce0375a4e7.png') }}" alt="Firetube Logo" class="logo">
-        </div>
-        <h2 class="subtitle">Firetube’s Guides</h2>
-        <div class="cta-buttons">
-            <a href="#" class="btn-primary">Zum YouTube-Kanal</a>
-            <a href="#" class="btn-secondary">Join Discord</a>
-        </div>
-        <nav class="navbar">
+        <img src="{{ url_for('static', filename='firetube_logo.png') }}" alt="Firetube Logo" class="logo">
+        <h1>Firetube’s Guides</h1>
+        <nav class="main-nav">
             <a href="#">Home</a>
             <a href="#">Guides</a>
+            <a href="#">Builds</a>
+            <a href="#">Klassen</a>
+            <a href="#">Welt</a>
             <a href="#">YouTube</a>
             <a href="#">Discord</a>
             <a href="#">Über mich</a>
         </nav>
+        <div class="cta-buttons">
+            <a href="#" class="btn primary">Zum YouTube-Kanal</a>
+            <a href="#" class="btn secondary">Join Discord</a>
+        </div>
     </header>
 
-    <!-- Content Bereich -->
-    <main>
-        <section class="guides">
-            <h2>Neueste Guides</h2>
-            <div class="guide-grid">
-                <div class="guide-card">
-                    <img src="{{ url_for('static', filename='heiler_pvp.png') }}" alt="Heiler PvP Build">
-                    <h3>Heiler PvP Build – Tanky Mage</h3>
-                    <p>Skilling, Gear und Rotation für maximale Überlebenszeit und Druck.</p>
-                    <a href="#" class="btn-primary">Ansehen</a>
-                </div>
-                <div class="guide-card">
-                    <img src="{{ url_for('static', filename='leveln.png') }}" alt="Schnell Leveln 1–50">
-                    <h3>Schnell Leveln 1–50</h3>
-                    <p>Optimale Routen, Events & Daily-Routine für Solo und Gruppe.</p>
-                    <a href="#" class="btn-primary">Ansehen</a>
-                </div>
-                <div class="guide-card">
-                    <img src="{{ url_for('static', filename='einsteiger.png') }}" alt="Einsteigerguide 2025">
-                    <h3>Einsteigerguide 2025</h3>
-                    <p>Alles Wichtige in 15 Minuten: Klassen, Stats, Progression.</p>
-                    <a href="#" class="btn-primary">Ansehen</a>
-                </div>
+    <!-- Artikel Übersicht -->
+    <section class="articles">
+        <h2>Neueste Guides</h2>
+        <div class="article-container">
+            <div class="article-card lower">
+                <img src="{{ url_for('static', filename='artikel1.png') }}" alt="Guide Bild">
+                <h3>Heiler PvP Build – Tanky Mage</h3>
+                <p>Skilling, Gear und Rotation für maximale Überlebenszeit.</p>
+                <a href="#" class="btn orange">Ansehen</a>
             </div>
-        </section>
-    </main>
+            <div class="article-card higher">
+                <img src="{{ url_for('static', filename='artikel2.png') }}" alt="Guide Bild">
+                <h3>Schnell Leveln 1–50</h3>
+                <p>Beste Routen, Dailies und Gruppenwege.</p>
+                <a href="#" class="btn orange">Ansehen</a>
+            </div>
+            <div class="article-card lower">
+                <img src="{{ url_for('static', filename='artikel3.png') }}" alt="Guide Bild">
+                <h3>Einsteigerguide 2025</h3>
+                <p>Alles wichtige in 15 Minuten erklärt.</p>
+                <a href="#" class="btn orange">Ansehen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer mit Fantasy-Effekten -->
+    <footer>
+        <p>© 2025 Firetube – Alle Rechte vorbehalten.</p>
+    </footer>
 </body>
 </html>
