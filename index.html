@@ -1,42 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
-  <header class="hero">
-    <div class="container wrap">
-      <h1>{{ CHANNEL_NAME }}</h1>
-      <div class="tagline">{{ TAGLINE }}</div>
-      <div class="btns">
-        <a class="btn" href="{{ YOUTUBE_URL }}" target="_blank">Zum YouTube‑Kanal</a>
-        <a class="btn secondary" href="{{ DISCORD_URL }}" target="_blank">Join Discord</a>
-      </div>
-    </div>
-  </header>
+<h2>Neueste Guides</h2>
 
-  <section class="container">
-    <h2 class="section-title">Neueste Guides</h2>
-    <div class="cards">
-      {% for g in guides %}
-        <article class="card">
-          <img src="{{ url_for('static', filename=g.thumb) }}" alt="{{ g.title }}">
-          <div class="p">
-            <h3>{{ g.title }}</h3>
-            <p>{{ g.summary }}</p>
-            <a class="btn secondary" href="{{ g.url }}" target="_blank">Ansehen</a>
-          </div>
-        </article>
-      {% endfor %}
-    </div>
-  </section>
+{% for g in guides %}
+<div class="guide">
+  <img src="{{ g.image }}" alt="{{ g.title }}">
+  <h3>{{ g.title }}</h3>
+  <p>{{ g.summary }}</p>
+  <a href="{{ g.url }}" target="_blank">Ansehen</a>
+</div>
+{% endfor %}
 
-  <section class="container grid2">
-    <div class="box">
-      <h2 class="section-title">Über Firetube</h2>
-      <p>Ich bin Jonas – Chemikant, Gamer und Content‑Creator. Auf Firetube bekommst du kompakte
-      <strong>Throne and Liberty</strong>‑Guides, Builds und News – ohne Bullshit, direkt auf den Punkt.</p>
-    </div>
-    <div class="box">
-      <h2 class="section-title">Community & Support</h2>
-      <p>Tritt dem Discord bei, teile Builds und finde Gruppen. Für Kooperationen/Anfragen: <em>Kontakt in Kürze</em>.</p>
-      <div class="btns"><a class="btn" href="{{ DISCORD_URL }}" target="_blank">Discord beitreten</a></div>
-    </div>
-  </section>
+<h2>Über Firetube</h2>
+<p>Ich bin Jonas – Chemikant, Gamer und Content-Creator.
+Auf Firetube bekommst du kompakte Throne and Liberty Guides, 
+Tipps für Builds und Strategien.</p>
 {% endblock %}
