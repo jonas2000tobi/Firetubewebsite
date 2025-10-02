@@ -1,13 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Firetube – Throne and Liberty Guides</title>
-    <!-- CSS richtig eingebunden -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ CHANNEL_NAME if CHANNEL_NAME else "Firetube" }} – {{ TAGLINE if TAGLINE else "Throne and Liberty Guides" }}</title>
+
+  <!-- Headline-Font + Text -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
 </head>
 <body>
-    {% block content %}{% endblock %}
+  <div class="page-wrap">
+    <!-- HERO / HEADER -->
+    <header class="hero">
+      <!-- Der runde Phoenix „umrahmt“ Title, CTAs und Menü -->
+      <img
+        class="hero-frame"
+        src="{{ url_for('static', filename='file_00000000173061f4b2d1c7ce0375a4e7.png') }}"
+        alt="Firetube Phoenix"
+        width="720"
+        height="360"
+      />
+
+      <!-- unsichtbar (SEO), der große „Firetube“-Schriftzug ist entfernt -->
+      <h1 class="visually-hidden">{{ CHANNEL_NAME if CHANNEL_NAME else "Firetube" }}</h1>
+
+      <h2 class="hero-sub">Firetube’s Guides</h2>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://youtube.com" target="_blank" rel="noopener">Zum YouTube-Kanal</a>
+        <a class="btn btn-ghost" href="https://discord.gg" target="_blank" rel="noopener">Join Discord</a>
+      </div>
+
+      <nav class="main-nav">
+        <a href="/">Home</a>
+        <a href="/guides">Guides</a>
+        <a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://discord.gg" target="_blank" rel="noopener">Discord</a>
+        <a href="/about">Über mich</a>
+      </nav>
+    </header>
+
+    <main class="content">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>© {{ 2025 }} Firetube – Alle Rechte vorbehalten.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- winzige, dezente Glut-Partikel im Hintergrund -->
+  <div class="embers" aria-hidden="true"></div>
 </body>
 </html>
