@@ -1,93 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Firetube – Throne and Liberty Guides</title>
+  <title>Firetube’s Guides</title>
+
+  <!-- Schriften nahe am Mockup -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Headlines: Cinzel, Text: Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
 
-  <!-- Hero / Header -->
-  <header class="hero"
-          style="background-image: url('{{ url_for('static', filename='header_bg.jpg') }}');">
+  <!-- HERO: Poster als Background, Inhalt darüber absolut positioniert -->
+  <header class="hero" style="--hero: url('{{ url_for('static', filename='hero_poster.jpg') }}');">
     <div class="hero__overlay"></div>
 
-    <!-- Optionales kleines Logo oben -->
-    <img class="hero__logo" src="{{ url_for('static', filename='logo.png') }}" alt="Firetube Logo" onerror="this.style.display='none'"/>
+    <!-- Titel-Stack -->
+    <div class="hero__stack">
+      <!-- Drei Zeilen wie im Poster: FIRETUBE / THRONE LIBERTY / Firetube's Guides -->
+      <h1 class="hero__line hero__firetube" aria-label="Firetube">FIRETUBE</h1>
+      <div class="hero__thl" aria-hidden="true">
+        <span>THRONE</span><span>LIBERTY</span>
+      </div>
+      <h2 class="hero__subtitle">Firetube’s Guides</h2>
 
-    <h1 class="hero__title">Firetube’s Guides</h1>
+      <!-- Action-Buttons -->
+      <div class="hero__ctas">
+        <a class="btn btn--gold" href="#" target="_blank">Zum YouTube-Kanal</a>
+        <a class="btn btn--frame" href="#" target="_blank">Join Discord</a>
+      </div>
 
-    <div class="hero__ctas">
-      <a class="btn btn--primary" href="#" target="_blank">Zum YouTube-Kanal</a>
-      <a class="btn btn--dark" href="#" target="_blank">Join Discord</a>
+      <!-- Menü (klickbar) -->
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/guides">Guides</a>
+        <a href="/builds">Builds</a>
+        <a href="/klassen">Klassen</a>
+        <a href="/welt">Welt</a>
+        <a href="/tipps">Tipps & Tricks</a>
+        <a href="/ueber-mich">Über mich</a>
+      </nav>
     </div>
-
-    <nav class="nav">
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Guides</a></li>
-        <li><a href="#">Builds</a></li>
-        <li><a href="#">Klassen</a></li>
-        <li><a href="#">Welt</a></li>
-        <li><a href="#" target="_blank">YouTube</a></li>
-        <li><a href="#" target="_blank">Discord</a></li>
-        <li><a href="#">Über mich</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <!-- Sektion: Neueste Guides -->
+  <!-- Neueste Guides – drei Cards, Mitte höher -->
   <section class="section">
-    <h2 class="section__title">Neueste Guides</h2>
+    <h3 class="section__title">Neueste Guides</h3>
 
     <div class="cards">
-      <!-- Karte 1 (links – etwas tiefer) -->
       <article class="card card--low">
         <div class="card__media">
-          <img src="{{ url_for('static', filename='guide1.jpg') }}" alt="Guide Bild 1" />
+          <img src="{{ url_for('static', filename='guide1.jpg') }}" alt="Heiler PvP Build – Tanky Mage">
         </div>
         <div class="card__body">
-          <h3 class="card__title">Heiler PvP Build – Tanky Mage</h3>
+          <h4 class="card__title">Heiler PvP Build – Tanky Mage</h4>
           <p class="card__text">Skilling, Gear und Rotation für maximale Überlebenszeit und Druck.</p>
           <a class="btn btn--orange" href="#">Ansehen</a>
         </div>
       </article>
 
-      <!-- Karte 2 (mittig – leicht höher) -->
       <article class="card card--featured">
         <div class="card__media">
-          <img src="{{ url_for('static', filename='guide2.jpg') }}" alt="Guide Bild 2" />
+          <img src="{{ url_for('static', filename='guide2.jpg') }}" alt="Schnell Leveln 1–50">
         </div>
         <div class="card__body">
-          <h3 class="card__title">Schnell Leveln 1–50</h3>
-          <p class="card__text">Beste Routen, Dailies & Gruppenwege für schnelles Progression.</p>
+          <h4 class="card__title">Schnell Leveln 1–50</h4>
+          <p class="card__text">Optimierte Routen, Events & Daily-Routine für Solo und Gruppe.</p>
           <a class="btn btn--orange" href="#">Ansehen</a>
         </div>
       </article>
 
-      <!-- Karte 3 (rechts – etwas tiefer) -->
       <article class="card card--low">
         <div class="card__media">
-          <img src="{{ url_for('static', filename='guide3.jpg') }}" alt="Guide Bild 3" />
+          <img src="{{ url_for('static', filename='guide3.jpg') }}" alt="Einsteigerguide 2025">
         </div>
         <div class="card__body">
-          <h3 class="card__title">Einsteigerguide 2025</h3>
-          <p class="card__text">Alles Wichtige in 15 Minuten: Klassen, Stats & Progression.</p>
+          <h4 class="card__title">Einsteigerguide 2025</h4>
+          <p class="card__text">Alles Wichtige in 15 Minuten: Klassen, Stats, Progression.</p>
           <a class="btn btn--orange" href="#">Ansehen</a>
         </div>
       </article>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
-    <p>© 2025 Firetube – Alle Rechte vorbehalten.</p>
+    © 2025 Firetube – Alle Rechte vorbehalten.
   </footer>
-
 </body>
 </html>
