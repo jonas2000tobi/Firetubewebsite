@@ -1,32 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ CHANNEL_NAME }} – {{ TAGLINE }}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, initial-scale=1">
+    <title>{{ CHANNEL_NAME }} - {{ TAGLINE }}</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <header>
-    <img src="{{ url_for('static', filename='logo.png') }}" alt="Firetube Logo" class="logo">
-    <h1>{{ CHANNEL_NAME }}</h1>
-    <p>{{ TAGLINE }}</p>
-  </header>
+    <header>
+        <img src="/logo.png" alt="Firetube Logo" class="logo">
+        <h1>{{ CHANNEL_NAME }}</h1>
+        <p>{{ TAGLINE }}</p>
+    </header>
 
-  <nav>
-    <a href="/">Home</a>
-    <a href="/guides">Guides</a>
-    <a href="https://youtube.com" target="_blank">YouTube</a>
-    <a href="https://discord.gg" target="_blank">Discord</a>
-    <a href="/about">Über mich</a>
-  </nav>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/guides">Guides</a>
+        <a href="https://youtube.com" target="_blank">YouTube</a>
+        <a href="https://discord.gg" target="_blank">Discord</a>
+        <a href="/about">Über mich</a>
+    </nav>
 
-  <main>
-    {% block content %}{% endblock %}
-  </main>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
 
-  <footer>
-    <p>&copy; 2025 Firetube – Alle Rechte vorbehalten.</p>
-  </footer>
+    <footer>
+        <p>© 2025 Firetube – Alle Rechte vorbehalten.</p>
+    </footer>
 </body>
 </html>
