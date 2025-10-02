@@ -5,48 +5,43 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TPL_DIR  = os.path.join(BASE_DIR, "templates")
 ST_DIR   = os.path.join(BASE_DIR, "static")
 
-# WICHTIG: explizit template/static setzen
 app = Flask(
     __name__,
     template_folder=TPL_DIR,
     static_folder=ST_DIR,
-    static_url_path="/static"
+    static_url_path="/static",
 )
 
 def _log_tree():
     def ls(path):
         try:
-            return sorted(os.listdir(path))
+            return ", ".join(sorted(os.listdir(path)))
         except Exception as e:
-            return [f"<ERR {e}>"]
+            return f"<ERR {e}>"
     print("== APP PATHS ==")
     print("BASE_DIR:", BASE_DIR)
     print("TPL_DIR :", TPL_DIR, "->", ls(TPL_DIR))
     print("ST_DIR  :", ST_DIR,  "->", ls(ST_DIR))
+    print("index.html exists:", os.path.exists(os.path.join(TPL_DIR, "index.html")))
     print("================")
 
-@app.before_first_request
-def startup_log():
-    _log_tree()
-    idx = os.path.join(TPL_DIR, "index.html")
-    print("index.html exists:", os.path.exists(idx))
+# Statt before_first_request: einfach beim Import einmal loggen
+_log_tree()
 
 @app.route("/_diag")
 def diag():
-    # kleine Diagnose-Seite im Browser
-    lines = []
-    lines.append(f"BASE_DIR: {BASE_DIR}")
-    lines.append(f"TEMPLATES: {TPL_DIR}")
-    lines.append(f"STATIC: {ST_DIR}")
-    lines.append(f"templates/: {', '.join(sorted(os.listdir(TPL_DIR)))}")
-    lines.append(f"static/: {', '.join(sorted(os.listdir(ST_DIR)))}")
-    idx = os.path.join(TPL_DIR, "index.html")
-    lines.append(f"index.html exists: {os.path.exists(idx)}")
+    lines = [
+        f"BASE_DIR: {BASE_DIR}",
+        f"TEMPLATES: {TPL_DIR}",
+        f"STATIC: {ST_DIR}",
+        f"templates/: {', '.join(sorted(os.listdir(TPL_DIR)))}",
+        f"static/: {', '.join(sorted(os.listdir(ST_DIR)))}",
+        f"index.html exists: {os.path.exists(os.path.join(TPL_DIR, 'index.html'))}",
+    ]
     return Response("\n".join(lines), mimetype="text/plain")
 
 @app.route("/")
 def home():
-    # Fallback: wenn index.html fehlt, zeig Diagnose im Log und im Browser
     idx = os.path.join(TPL_DIR, "index.html")
     if not os.path.exists(idx):
         _log_tree()
@@ -54,7 +49,7 @@ def home():
             "Template 'index.html' NICHT gefunden.\n"
             "Sieh dir /_diag an und prüfe Ordner & Dateinamen (Case-Sensitive!).",
             mimetype="text/plain",
-            status=500
+            status=500,
         )
     return render_template("index.html")
 
