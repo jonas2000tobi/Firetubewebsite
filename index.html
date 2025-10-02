@@ -1,18 +1,33 @@
 {% extends "base.html" %}
+
 {% block content %}
 <h2>Neueste Guides</h2>
 
-{% for g in guides %}
-<div class="guide">
-  <img src="{{ g.image }}" alt="{{ g.title }}">
-  <h3>{{ g.title }}</h3>
-  <p>{{ g.summary }}</p>
-  <a href="{{ g.url }}" target="_blank">Ansehen</a>
+<div class="guide-card">
+    <img src="/guide1.png" alt="Heiler PvP Build – Tanky Mage">
+    <h3>Heiler PvP Build – Tanky Mage</h3>
+    <p>Skillung, Gear und Rotation für maximale Überlebenszeit und Druck.</p>
+    <a class="button" href="/guides#heilerpvp">Ansehen</a>
 </div>
-{% endfor %}
 
-<h2>Über Firetube</h2>
-<p>Ich bin Jonas – Chemikant, Gamer und Content-Creator.
-Auf Firetube bekommst du kompakte Throne and Liberty Guides, 
-Tipps für Builds und Strategien.</p>
+<div class="guide-card">
+    <img src="/guide2.png" alt="Schnell Leveln 1–50">
+    <h3>Schnell Leveln 1–50</h3>
+    <p>Optimale Routen, Events & Daily-Routine für Solo und Gruppe.</p>
+    <a class="button" href="/guides#leveln">Ansehen</a>
+</div>
+
+<div class="guide-card">
+    <img src="/guide3.png" alt="Einsteigerguide 2025">
+    <h3>Einsteigerguide 2025</h3>
+    <p>Alles Wichtige in 15 Minuten: Klassen, Stats, Progression.</p>
+    <a class="button" href="/guides#einsteiger">Ansehen</a>
+</div>
+
+<section class="about">
+    <h2>Über Firetube</h2>
+    <p>Ich bin Jonas – Chemikant, Gamer und Content-Creator.
+       Auf Firetube bekommst du kompakte Throne and Liberty Guides,
+       Tipps für Builds und Strategien.</p>
+</section>
 {% endblock %}
