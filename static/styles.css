@@ -1,128 +1,159 @@
-/* ================================
-   FIRETUBE – Black/Orange Theme
-   Nur CSS, keine HTML-Änderungen nötig
-   ================================ */
-
-:root{
-  --bg: #0e0f11;
-  --bg2:#15161a;
-  --panel:#1a1c21;
-  --card:#1e2026;
-  --border:#2b2e36;
-  --text:#e9e9ee;
-  --muted:#b7bac4;
-  --accent:#ff7a18;
-  --accent-2:#ffb85c;
-  --shadow: 0 10px 30px rgba(0,0,0,.45);
+/* Allgemeines Design */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: #fff;
+    line-height: 1.6;
+    text-align: center;
 }
 
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{
-  background:
-    radial-gradient(1200px 600px at 50% -200px, rgba(255,122,24,.08), transparent 60%),
-    linear-gradient(#101114, #0e0f11);
-  color:var(--text);
-  font: 500 16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+/* Header */
+header {
+    padding: 40px 20px;
 }
 
-/* Utility */
-.container{max-width:1100px;margin:0 auto;padding:0 18px}
-.hidden{display:none}
-
-/* Header / Hero */
-header{
-  background: linear-gradient(180deg, #121317 0%, #101114 100%);
-  border-bottom:1px solid var(--border);
-  padding: 26px 0 18px;
-  text-align:center;
-}
-header img{width:92px;height:auto;display:block;margin:0 auto 8px;filter: drop-shadow(0 4px 10px rgba(0,0,0,.35))}
-header h1{margin:4px 0 4px;font-weight:800;letter-spacing:.3px;
-  font-size: clamp(32px, 4.5vw, 46px); color:var(--accent)}
-header p{margin:0 0 14px;color:var(--accent-2);font-size:clamp(14px,2.5vw,18px)}
-
-/* CTA Buttons unter Titel */
-.btn, .btn-orange, .btn-outline{
-  display:inline-block; border-radius:12px; padding:10px 14px;
-  text-decoration:none; font-weight:700; letter-spacing:.2px; transition:.18s ease;
-  box-shadow: var(--shadow);
-}
-.btn{ background:#24262d; color:var(--text); border:1px solid var(--border)}
-.btn:hover{ transform:translateY(-1px); border-color:#3a3e48 }
-.btn-orange{
-  background: linear-gradient(135deg, var(--accent), #ff6a00);
-  color:#111; border:1px solid #000; box-shadow:0 12px 22px rgba(255,122,24,.25)
-}
-.btn-orange:hover{ filter:saturate(1.08) brightness(1.02); transform:translateY(-1px) }
-.btn-outline{
-  background:transparent; color:var(--text); border:1px solid var(--border)
-}
-header .btn{margin:0 6px}
-
-/* Nav */
-nav{
-  margin-top:10px; padding:10px 0 8px; text-align:center;
-  position:sticky; top:0; z-index:5; background:#121317cc; backdrop-filter: blur(6px);
-  border-bottom:1px solid var(--border);
-}
-nav a{
-  color:var(--text); text-decoration:none; margin:0 10px; padding:6px 10px; border-radius:8px;
-  transition:.15s ease; font-weight:600
-}
-nav a:hover{ background:#20232b; color:var(--accent-2) }
-
-/* Section Titel */
-h2{
-  text-align:center; color:var(--accent); font-size:clamp(22px,3vw,28px);
-  margin:22px 0 12px; letter-spacing:.2px
+/* Logo groß */
+.hero-logo {
+    max-width: 300px;
+    margin: 0 auto 20px auto;
+    display: block;
 }
 
-/* Guides Grid */
-.guides{
-  display:grid; grid-template-columns:repeat(3, minmax(240px, 1fr)); gap:22px;
-  align-items:start; justify-content:center; width: min(1100px, 92vw);
-  margin: 0 auto 26px;
+/* Haupttitel */
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ff7b00;
+    margin: 10px 0;
+    font-family: 'Merriweather', serif;
 }
-.guide-card{
-  background:var(--card); border:1px solid var(--border); border-radius:14px;
-  padding:14px; text-align:center; box-shadow: var(--shadow);
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-}
-.guide-card:hover{
-  transform: translateY(-3px);
-  box-shadow:0 16px 34px rgba(0,0,0,.55), 0 0 0 1px rgba(255,122,24,.1) inset;
-  border-color:#3a3e48;
-}
-.guide-card img{
-  width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:10px;
-  background:#23262d; border:1px solid #2b2f37; display:block; margin-bottom:10px
-}
-.guide-card h3{
-  margin:8px 0 6px; font-size:18px; line-height:1.25
-}
-.guide-card p{ margin:0 0 12px; color:var(--muted); font-size:14px }
-.guide-card .btn-orange{ padding:8px 12px; border-radius:10px }
 
-/* mittlere Karte leicht höher */
-.guide-card.middle{ transform: translateY(-10px) }
-.guide-card.middle:hover{ transform: translateY(-12px) }
+/* Untertitel */
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: #ddd;
+    margin-bottom: 25px;
+    font-family: 'Merriweather', serif;
+}
+
+/* Buttons im Header */
+.hero-buttons {
+    margin: 15px 0;
+}
+.hero-buttons .btn {
+    background: #222;
+    border: 1px solid #fff;
+    padding: 10px 20px;
+    margin: 0 8px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+.hero-buttons .btn:hover {
+    background: #ff7b00;
+    border-color: #ff7b00;
+    color: #000;
+}
+
+/* Navigation */
+nav {
+    margin-top: 15px;
+}
+nav a {
+    margin: 0 12px;
+    text-decoration: none;
+    color: #fff;
+    transition: 0.3s;
+}
+nav a:hover {
+    color: #ff7b00;
+}
+
+/* Guide Section */
+.guides {
+    padding: 40px 20px;
+}
+.guides h2 {
+    color: #ff7b00;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+.guide-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.guide-card {
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 20px;
+    width: 280px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+}
+.guide-card:hover {
+    transform: translateY(-5px);
+}
+.guide-card img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+.guide-card h3 {
+    margin: 10px 0;
+    color: #fff;
+}
+.guide-card p {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+.btn-orange {
+    background: #ff7b00;
+    color: #000;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    display: inline-block;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+.btn-orange:hover {
+    background: #ffa733;
+}
+
+/* Über Section */
+.about {
+    padding: 40px 20px;
+}
+
+/* Community Section */
+.community {
+    padding: 40px 20px;
+}
+.community .btn {
+    background: #222;
+    border: 1px solid #fff;
+    padding: 10px 20px;
+    margin: 8px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+.community .btn:hover {
+    background: #ff7b00;
+    border-color: #ff7b00;
+    color: #000;
+}
 
 /* Footer */
-footer{
-  margin-top:30px; background: var(--bg2); border-top:1px solid var(--border);
-  padding:26px 0 24px; text-align:center; color:var(--muted)
-}
-footer h2{ margin-top:0 }
-footer .btn{ margin:6px 6px }
-
-/* Responsive */
-@media (max-width: 1024px){
-  .guides{ grid-template-columns: repeat(2, minmax(240px, 1fr)); gap:18px }
-  .guide-card.middle{ transform:none }
-}
-@media (max-width: 680px){
-  header img{ width:80px }
-  .guides{ grid-template-columns:1fr; gap:16px }
-  .guide-card{ width:min(96vw, 640px); margin:0 auto }
+footer {
+    background: #000;
+    padding: 15px;
+    margin-top: 40px;
+    font-size: 0.8rem;
+    color: #aaa;
 }
