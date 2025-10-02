@@ -1,32 +1,44 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, initial-scale=1">
-    <title>{{ CHANNEL_NAME }} - {{ TAGLINE }}</title>
-    <link rel="stylesheet" href="/styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ CHANNEL_NAME }} – {{ TAGLINE }}</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <header>
-        <img src="/file_0000000075946243bcc927f04da6365e.png" alt="Firetube Logo" class="logo">
-        <h1>{{ CHANNEL_NAME }}</h1>
-        <p>{{ TAGLINE }}</p>
-    </header>
+  <!-- HERO / HEADER -->
+  <header class="hero">
+    <div class="hero-inner">
+      <img src="/logo.png" alt="Firetube Logo" class="hero-logo">
+      <h1 class="site-title">{{ CHANNEL_NAME }}</h1>
+      <p class="site-tagline">{{ TAGLINE }}</p>
+      <div class="cta-row">
+        <a class="btn" href="https://youtube.com" target="_blank">📺 Zum YouTube-Kanal</a>
+        <a class="btn btn-outline" href="https://discord.gg" target="_blank">💬 Join Discord</a>
+      </div>
+    </div>
+  </header>
 
-    <nav>
-        <a href="/">Home</a>
-        <a href="/guides">Guides</a>
-        <a href="https://youtube.com" target="_blank">YouTube</a>
-        <a href="https://discord.gg" target="_blank">Discord</a>
-        <a href="/about">Über mich</a>
-    </nav>
+  <!-- NAV -->
+  <nav class="topnav">
+    <a href="/">Home</a>
+    <a href="/guides">Guides</a>
+    <a href="https://youtube.com" target="_blank">YouTube</a>
+    <a href="https://discord.gg" target="_blank">Discord</a>
+    <a href="/about">Über mich</a>
+  </nav>
 
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+  <!-- CONTENT -->
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
 
-    <footer>
-        <p>© 2025 Firetube – Alle Rechte vorbehalten.</p>
-    </footer>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      © 2025 Firetube – Alle Rechte vorbehalten.
+    </div>
+  </footer>
 </body>
 </html>
