@@ -1,24 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-  <header class="hero">
-    <div class="container wrap">
-      <h1>Guides</h1>
-      <div class="tagline">Alle Builds, Routen und Tipps an einem Ort.</div>
-    </div>
-  </header>
-
-  <section class="container">
-    <div class="cards">
-      {% for g in guides %}
-        <article class="card">
-          <img src="{{ url_for('static', filename=g.thumb) }}" alt="{{ g.title }}">
-          <div class="p">
-            <h3>{{ g.title }}</h3>
-            <p>{{ g.summary }}</p>
-            <a class="btn secondary" href="{{ g.url }}" target="_blank">Ansehen</a>
-          </div>
-        </article>
-      {% endfor %}
-    </div>
-  </section>
+<section>
+  <h2 class="section-title">Alle Guides</h2>
+  <p>Hier findest du eine Übersicht aller Firetube-Guides für Throne and Liberty.</p>
+</section>
 {% endblock %}
