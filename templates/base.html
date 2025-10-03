@@ -5,17 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}WEISSE FLAMME{% endblock %}</title>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <!-- Favicon + Styles -->
   <link rel="icon" href="{{ url_for('static', filename='logo.png') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}?v=18">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}?v=22">
 </head>
 <body>
-  <!-- Topbar -->
+  <!-- kompakter Header -->
   <header class="topbar">
     <div class="container nav">
       <nav class="menu">
@@ -34,13 +32,14 @@
 
   {% block content %}{% endblock %}
 
-  <!-- Start immer ganz oben, kein Scroll-Restore auf die Karte -->
+  <!-- NIE automatisch zur Karte springen -->
   <script>
     (function () {
       try { history.scrollRestoration = 'manual'; } catch (e) {}
-      window.addEventListener('load', function () {
-        window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-      }, { once: true });
+      const forceTop = () => { if (!location.hash) window.scrollTo(0,0); };
+      window.addEventListener('DOMContentLoaded', forceTop, { once:true });
+      window.addEventListener('pageshow', e => { if (e.persisted) setTimeout(forceTop, 50); });
+      window.addEventListener('load', () => setTimeout(forceTop, 250), { once:true });
     })();
   </script>
 </body>
