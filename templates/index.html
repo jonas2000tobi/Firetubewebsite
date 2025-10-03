@@ -1,95 +1,77 @@
-:root{
-  --bg:#0c0f12; --panel:#0f1318; --text:#eef2f6; --muted:#c2ceda;
-  --gold:#e1c58a; --gold-deep:#b68f45;
-  --line: rgba(255,255,255,.08);
-  --shadow: 0 30px 60px rgba(0,0,0,.55);
-}
+{% extends 'base.html' %}
+{% block title %}WEISSE FLAMME · THRONE AND LIBERTY{% endblock %}
 
-/* Basics */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
-  color:var(--text);
-  background:var(--bg);
-}
-.container{width:min(1200px,92vw);margin-inline:auto}
+{% block content %}
+<section class="hero" style="background-image:
+  radial-gradient(ellipse at center, rgba(255,255,255,.06), rgba(0,0,0,.86) 60%),
+  url('{{ url_for('static', filename='hero_bg.png') }}');">
+  <div class="container hero-inner">
+    <h1 class="title">WEISSE FLAMME</h1>
+    <p class="subtitle">THRONE <span class="amp">&amp;</span> LIBERTY</p>
+    <p class="lead">Infos, Builds und Guides zu THRONE AND LIBERTY</p>
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="#search">Guides durchsuchen</a>
+      <a class="btn btn-dark" href="#discord">
+        <img src="{{ url_for('static', filename='icon_discord.svg') }}" alt="" aria-hidden="true">
+        <span>Zum Discord</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-/* Topbar */
-.topbar{
-  position:sticky;top:0;z-index:50;
-  background:linear-gradient(180deg,rgba(2,4,6,.8),rgba(2,4,6,.35));
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--line);
-}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-.menu{display:flex;gap:28px}
-.menu a{color:#d9e2ec;text-decoration:none;font-weight:600;opacity:.85}
-.menu a.active,.menu a:hover{opacity:1}
+<nav class="quick-nav container" aria-label="Schnellzugriff">
+  <a class="qbtn" href="#guides">Guides</a>
+  <a class="qbtn" href="#klassen">Klassen</a>
+  <a class="qbtn" href="#builds">Builds</a>
+  <a class="qbtn" href="#map-embed-test">Karte</a>
+</nav>
 
-/* Buttons */
-.btn{display:inline-flex;gap:10px;align-items:center;text-decoration:none;font-weight:700;
-  padding:10px 16px;border-radius:12px;border:1px solid transparent}
-.btn img{width:18px;height:18px}
-.btn-discord{background:#0f1a24;border-color:#1e2a36}
-.btn-gold{background:linear-gradient(180deg,var(--gold),#f2dca7);color:#13110d}
-.btn-dark{background:#0d1116;border:1px solid rgba(255,255,255,.12);color:var(--text)}
+<!-- Scroll-Ziel für #klassen -->
+<div id="klassen" style="height:1px"></div>
 
-/* Hero */
-.hero{
-  position:relative; min-height:64vh;
-  display:flex; align-items:center; justify-content:center;
-  border-bottom:1px solid var(--line);
-  background-position:center center; background-size:cover; background-repeat:no-repeat;
-}
-.hero-inner{text-align:center;padding:72px 0}
-.title{
-  font-family:Cinzel,serif;font-weight:700;letter-spacing:.08em;
-  font-size:clamp(42px,7vw,86px);margin:0;color:var(--gold);
-  text-shadow:0 8px 40px rgba(0,0,0,.85)
-}
-.subtitle{
-  font-family:Cinzel,serif;font-size:clamp(18px,2.6vw,30px);
-  letter-spacing:.25em;margin:.3em 0 0;color:#e8efe9
-}
-.lead{color:#d8e2ee;margin:22px auto 26px;font-size:clamp(16px,1.8vw,20px)}
-.hero-cta{display:flex;gap:14px;justify-content:center}
+<!-- Kartenbereich mit Hintergrund + Ornamenten -->
+<section class="features-wrap">
+  <div class="features container" id="guides">
+    <article class="card">
+      <div class="card-icon">
+        <img src="{{ url_for('static', filename='icon_swords.svg') }}" alt="">
+      </div>
+      <h3>Neuer Spieler?</h3>
+      <p>Hier den Einsteigerguide lesen</p>
+    </article>
 
-/* Quick-Links */
-.quick-nav{
-  display:flex; gap:12px; justify-content:center; align-items:center;
-  margin:20px auto 28px; flex-wrap:wrap;
-}
-.qbtn{
-  display:inline-flex; align-items:center; justify-content:center;
-  padding:10px 16px; border-radius:12px;
-  font-weight:800; letter-spacing:.02em;
-  border:1px solid rgba(255,255,255,.12);
-  background:linear-gradient(180deg,rgba(16,20,25,.92),rgba(10,12,14,.92));
-  color:#e9eef4; text-decoration:none;
-  box-shadow:0 6px 16px rgba(0,0,0,.35);
-}
-.qbtn:hover{ transform:translateY(-1px); border-color:rgba(225,197,138,.35) }
+    <article class="card" id="builds">
+      <div class="card-icon">
+        <img src="{{ url_for('static', filename='logo.png') }}" class="icon-flame" alt="">
+      </div>
+      <h3>Beliebte Builds</h3>
+      <p>Durch die besten Builds stöbern</p>
+    </article>
 
-/* Einstiegs-Karten (Leiste) */
-.features{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
-  margin:40px auto 80px;position:relative;
-}
-.card{
-  position:relative;overflow:hidden;border-radius:18px;
-  padding:28px 24px;text-align:center;
-  background:linear-gradient(180deg,rgba(14,18,23,.95),rgba(11,14,17,.92));
-  border:1px solid rgba(225,197,138,.08);
-  box-shadow:0 10px 30px rgba(0,0,0,.45)
-}
-.card::after{
-  content:""; position:absolute; inset:0; border-radius:18px; pointer-events:none;
-  box-shadow: inset 0 0 0 1px rgba(225,197,138,.12), 0 0 32px rgba(225,197,138,.08);
-}
-.card-icon{display:grid;place-items:center;margin-bottom:14px;position:relative}
-.card-icon::before{
-  content:"";width:66px;height:66px;border-radius:50%;
-  background:
-    rad
+    <article class="card">
+      <div class="card-icon">
+        <img src="{{ url_for('static', filename='icon_chat.svg') }}" alt="">
+      </div>
+      <h3>Artikelvorschläge</h3>
+      <p>Verrate uns, was du lesen willst</p>
+    </article>
+  </div>
+</section>
+
+<!-- Interaktive Karte – Embed-Test -->
+<section class="container" id="map-embed-test" style="margin:36px auto 60px">
+  <div class="section-head">
+    <h2>Interaktive Karte (Embed-Test)</h2>
+    <p class="section-sub">Wenn der Anbieter Embeds erlaubt, siehst du hier die Karte.</p>
+  </div>
+  <iframe
+    src="https://questlog.gg/throne-and-liberty/en/map"
+    loading="lazy"
+    style="width:100%;height:70vh;border:0;border-radius:16px;display:block;box-shadow:0 20px 60px rgba(0,0,0,.55)">
+  </iframe>
+  <p style="text-align:center;color:#cbd6e2;margin-top:10px">
+    Falls hier nichts erscheint: Der Anbieter blockt iFrames.
+    <a href="https://questlog.gg/throne-and-liberty/en/map" target="_blank" rel="noopener">Im neuen Tab öffnen</a>.
+  </p>
+</section>
+{% endblock %}
