@@ -8,7 +8,7 @@
   radial-gradient(ellipse at center, rgba(255,255,255,.06), rgba(0,0,0,.86) 60%),
   url('{{ url_for('static', filename='hero_bg.png') }}');">
 
-  <!-- Panels wie in deiner Skizze -->
+  <!-- Panels links/rechts -->
   <div class="hero-panels">
     <a class="hero-panel left"  href="#anleitungen" aria-label="Anleitungen"></a>
     <a class="hero-panel right" href="#map"         aria-label="Karte"></a>
@@ -18,7 +18,6 @@
     <h1 class="title">WEISSE FLAMME</h1>
     <p class="subtitle">THRONE <span class="amp">&amp;</span> LIBERTY</p>
     <p class="lead">Infos, Builds und Guides zu THRONE AND LIBERTY</p>
-
     <div class="hero-cta">
       <a class="btn btn-gold" href="#search">Guides durchsuchen</a>
       <a class="btn btn-dark" href="#discord">
@@ -29,26 +28,26 @@
   </div>
 </section>
 
-<!-- Mittlere Menüleiste (aufgehübscht) -->
+<!-- Mittlere Menüleiste -->
 <nav class="quick-nav container" aria-label="Schnellzugriff">
   <a class="qbtn" href="#guides">Guides</a>
   <a class="qbtn" href="#klassen">Klassen</a>
   <a class="qbtn" href="#builds">Builds</a>
-  <a class="qbtn" href="#welt">Welt</a>   <!-- nur Link, Abschnitt später -->
+  <a class="qbtn" href="#welt">Welt</a>
   <a class="qbtn" href="#map">Karte</a>
 </nav>
 
-<!-- Feature-Kacheln + Dungeon-BG + Runen -->
+<!-- Feature-Kacheln mit hero_bg.png als Hintergrund -->
 <section
   class="features-wrap"
   id="guides"
   style="
-    --bg-img: url('{{ url_for('static', filename='features_bg.jpg') }}');
+    --bg-img: url('{{ url_for('static', filename='hero_bg.png') }}');
     --runes-left:  url('{{ url_for('static', filename='runes_left.svg') }}');
     --runes-right: url('{{ url_for('static', filename='runes_right.svg') }}');">
 
   <div class="container features" id="anleitungen">
-    <article class="card">
+    <article class="card card--xl">
       <div class="card-icon">
         <img src="{{ url_for('static', filename='icon_swords.svg') }}" alt="">
       </div>
@@ -56,7 +55,8 @@
       <p>Hier den Einsteigerguide lesen</p>
     </article>
 
-    <article class="card" id="builds">
+    <!-- mittlere Kachel leicht angehoben -->
+    <article class="card card--xl card--raised" id="builds">
       <div class="card-icon">
         <img src="{{ url_for('static', filename='logo.png') }}" class="icon-flame" alt="">
       </div>
@@ -64,7 +64,7 @@
       <p>Durch die besten Builds stöbern</p>
     </article>
 
-    <article class="card">
+    <article class="card card--xl">
       <div class="card-icon">
         <img src="{{ url_for('static', filename='icon_chat.svg') }}" alt="">
       </div>
