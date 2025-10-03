@@ -1,112 +1,77 @@
-:root{
-  --bg:#0c0f12; --panel:#0f1318; --text:#eef2f6; --muted:#c2ceda;
-  --gold:#e1c58a; --gold-deep:#b68f45;
-  --line: rgba(255,255,255,.08);
-  --shadow: 0 30px 60px rgba(0,0,0,.55);
-
-  /* Extras für die schöne Leiste */
-  --edge: rgba(225,197,138,.18);
-  --edge-2: rgba(255,255,255,.06);
-  --glow: rgba(225,197,138,.35);
+/* Quick-Links unter dem Hero */
+.quick-nav{
+  display:flex; gap:12px; justify-content:center; align-items:center;
+  margin:20px auto 28px;
+  flex-wrap:wrap;
 }
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--bg)}
-.container{width:min(1200px,92vw);margin-inline:auto}
-
-/* Topbar */
-.topbar{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(2,4,6,.8),rgba(2,4,6,.35));backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-.menu{display:flex;gap:28px}
-.menu a{color:#d9e2ec;text-decoration:none;font-weight:600;opacity:.85}
-.menu a.active,.menu a:hover{opacity:1}
-.btn{display:inline-flex;gap:10px;align-items:center;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:12px;border:1px solid transparent}
-.btn img{width:18px;height:18px}
-.btn-discord{background:#0f1a24;border-color:#1e2a36}
-.btn-gold{background:linear-gradient(180deg,var(--gold),#f2dca7);color:#13110d}
-.btn-dark{background:#0d1116;border:1px solid rgba(255,255,255,.12);color:var(--text)}
-
-/* Hero – Bild wird im HTML gesetzt, hier Ausrichtung/Zentrierung */
-.hero{
-  position:relative;
-  min-height:64vh;
-  display:flex;align-items:center;justify-content:center;
-  border-bottom:1px solid var(--line);
-
-  /* sauber zentriert */
-  background-position:center center;   /* bei Bedarf: center 40% */
-  background-size:cover;
-  background-repeat:no-repeat;
+.qbtn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:10px 16px; border-radius:12px;
+  font-weight:800; letter-spacing:.02em;
+  border:1px solid rgba(255,255,255,.12);
+  background:linear-gradient(180deg,rgba(16,20,25,.92),rgba(10,12,14,.92));
+  color:#e9eef4; text-decoration:none;
+  box-shadow:0 6px 16px rgba(0,0,0,.35);
 }
-.hero-inner{text-align:center;padding:72px 0}
-.title{font-family:Cinzel,serif;font-weight:700;letter-spacing:.08em;font-size:clamp(42px,7vw,86px);margin:0;color:var(--gold);text-shadow:0 8px 40px rgba(0,0,0,.85)}
-.subtitle{font-family:Cinzel,serif;font-size:clamp(18px,2.6vw,30px);letter-spacing:.25em;margin:.3em 0 0;color:#e8efe9}
-.lead{color:#d8e2ee;margin:22px auto 26px;font-size:clamp(16px,1.8vw,20px)}
-.hero-cta{display:flex;gap:14px;justify-content:center}
+.qbtn:hover{ transform:translateY(-1px); border-color:rgba(225,197,138,.35) }
 
-/* ============ Schöne Leiste (Karten) ============ */
-.features{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
-  margin:40px auto 80px;
-  position:relative;
+/* Generische Abschnitt-Header */
+.home-section{ margin:36px auto 60px }
+.section-head{ display:flex; align-items:end; justify-content:space-between; gap:12px; margin-bottom:14px }
+.section-head h2{
+  font-family:Cinzel,serif; font-weight:700; color:var(--gold); margin:0;
+  letter-spacing:.03em; font-size:clamp(20px,2vw,26px)
 }
-/* zarter Trenner + Glow oberhalb der Leiste */
-.features::before{
-  content:"";position:absolute;left:50%;transform:translateX(-50%);
-  top:-26px;width:min(1200px,92vw);height:1px;
-  background:linear-gradient(90deg,transparent,var(--edge),transparent);
-  box-shadow:0 -12px 40px var(--glow);
-  pointer-events:none;
+.section-sub{ color:#cbd6e2; margin:0 }
+.chips{ display:flex; gap:8px; flex-wrap:wrap }
+.chip{
+  background:#11161b; border:1px solid rgba(255,255,255,.12);
+  color:#dfe7f1; padding:6px 10px; border-radius:999px; font-weight:700; font-size:13px
 }
+.chip.active, .chip:hover{ border-color:rgba(225,197,138,.4) }
 
-/* Karte – edel, glatter Rand, dezenter Goldschimmer */
-.card{
-  position:relative;overflow:hidden;border-radius:18px;
-  padding:28px 24px;text-align:center;
-  background:
-    radial-gradient(120% 100% at 50% 0%, rgba(255,255,255,.06), rgba(255,255,255,0) 55%),
-    linear-gradient(180deg, rgba(14,18,23,.95), rgba(11,14,17,.92));
-  border:1px solid var(--edge-2);
-  box-shadow:0 10px 30px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
-  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+/* Build-Grid (Platzhalterkarten) */
+.build-grid{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:18px
 }
-/* feiner „polierter“ Kantenlook */
-.card:before{
-  content:"";position:absolute;inset:-1px;border-radius:inherit;
-  padding:1px;background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,0));
-  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;mask-composite:exclude;opacity:.6;pointer-events:none;
-}
-.card:hover{
-  transform:translateY(-4px);
-  border-color:var(--edge);
-  box-shadow:0 18px 48px rgba(0,0,0,.6), 0 0 0 2px rgba(255,255,255,.02) inset;
-}
-
-/* Icon – runder Medaillon-Look mit sanftem Glow */
-.card-icon{display:grid;place-items:center;margin-bottom:14px;position:relative}
-.card-icon::before{
-  content:"";width:66px;height:66px;border-radius:50%;
-  background:
-    radial-gradient(70% 70% at 50% 35%, rgba(225,197,138,.26), rgba(225,197,138,0) 60%),
-    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,0));
+.build-card{
+  position:relative; border-radius:14px; padding:18px;
+  background:linear-gradient(180deg,rgba(18,22,27,.95),rgba(11,14,17,.92));
   border:1px solid rgba(255,255,255,.08);
-  box-shadow:0 8px 24px rgba(0,0,0,.45), inset 0 2px 10px rgba(255,255,255,.06);
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
 }
-.card-icon img{
-  position:absolute;inset:0;margin:auto;width:28px;height:28px;
-  filter:drop-shadow(0 2px 6px rgba(0,0,0,.5));
+.build-meta{ display:flex; justify-content:space-between; align-items:center; margin-bottom:6px }
+.tier{ padding:3px 8px; border-radius:999px; font-weight:800; font-size:12px }
+.tier-meta{ background:rgba(225,197,138,.18); color:var(--gold); border:1px solid rgba(225,197,138,.35) }
+.updated{ color:#aeb9c6; font-size:12px }
+.build-title{ margin:8px 0 2px; font-weight:800; letter-spacing:.02em }
+.build-tags{ margin:0 0 12px; color:#cbd6e2 }
+.build-link{
+  display:inline-flex; align-items:center; gap:8px; text-decoration:none; font-weight:800;
+  border:1px solid rgba(255,255,255,.12); padding:8px 12px; border-radius:10px; color:#eaf1f7
 }
-.icon-flame{
-  position:absolute;inset:0;margin:auto;width:30px;height:30px;border-radius:50%;
-  filter:drop-shadow(0 0 12px rgba(225,197,138,.25));
-}
+.build-link:hover{ border-color:rgba(225,197,138,.35) }
 
-/* Texte in der Karte */
-.card h3{font-family:Cinzel,serif;margin:8px 0 8px;color:var(--gold);text-transform:uppercase;letter-spacing:.02em}
-.card p{color:#c9d4df;margin:0}
+/* Updates-Liste */
+.updates{ list-style:none; padding:0; margin:0 }
+.updates li{ padding:10px 0; border-bottom:1px solid rgba(255,255,255,.06) }
+.updates a{ color:#eaf1f7; text-decoration:none; font-weight:700 }
+.updates a:hover{ text-decoration:underline }
+.u-meta{ color:#9fb0c0; margin-left:10px; font-size:12px }
+
+/* Map-Section */
+.map-section{ padding:18px 0 70px; border-top:1px solid rgba(255,255,255,.06) }
+.map-frame{
+  width:min(1200px,94vw); margin:10px auto; border-radius:16px; overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 20px 60px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.04);
+  background:#0c1015;
+}
+.map-iframe{ width:100%; height:70vh; border:0; display:block }
+.map-fallback{ text-align:center; color:#cbd6e2; margin-top:10px }
+.map-fallback a{ color:var(--gold) }
 
 /* Responsive */
 @media (max-width:960px){
-  .features{grid-template-columns:1fr}
+  .build-grid{ grid-template-columns:1fr }
 }
