@@ -60,7 +60,7 @@ body{
   /* HIER änderst du das Hero-Background (Dateiname in /static) */
   background:
     radial-gradient(ellipse at center, rgba(255,255,255,.06), rgba(0,0,0,.86) 60%),
-    url('/static/hero_bg.png');
+    url('/static/features_bg.png');
   background-size:cover; background-position:center;
 }
 
