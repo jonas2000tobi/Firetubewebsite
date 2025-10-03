@@ -8,7 +8,7 @@
   radial-gradient(ellipse at center, rgba(255,255,255,.06), rgba(0,0,0,.86) 60%),
   url('{{ url_for('static', filename='hero_bg.png') }}');">
 
-  <!-- Panels wie im Paint -->
+  <!-- Panels wie in deiner Paint-Skizze -->
   <div class="hero-panels">
     <a class="hero-panel left"  href="#anleitungen" aria-label="Anleitungen"></a>
     <a class="hero-panel right" href="#map"         aria-label="Karte"></a>
@@ -29,22 +29,23 @@
   </div>
 </section>
 
-<!-- Schnell-Filter -->
+<!-- Schnell-Filter (mittig) -->
 <nav class="quick-nav container" aria-label="Schnellzugriff">
   <a class="qbtn" href="#guides">Guides</a>
   <a class="qbtn" href="#klassen">Klassen</a>
   <a class="qbtn" href="#builds">Builds</a>
+  <a class="qbtn" href="#welt">Welt</a>   <!-- nur Link, kein Abschnitt -->
   <a class="qbtn" href="#map">Karte</a>
 </nav>
 
-<!-- Feature-Kacheln + Dungeon-BG + Runen -->
+<!-- Feature-Kacheln + Dungeon-Hintergrund + Runen -->
 <section
   class="features-wrap"
   id="guides"
   style="
-    --bg-img: url('{{ url_for('static', filename='features_bg.png') }}');
-    --runes-left:  url('{{ url_for('static', filename='runes_left.svg.png') }}');
-    --runes-right: url('{{ url_for('static', filename='runes_right.svg.png') }}');">
+    --bg-img: url('{{ url_for('static', filename='features_bg.jpg') }}');
+    --runes-left:  url('{{ url_for('static', filename='runes_left.svg') }}');
+    --runes-right: url('{{ url_for('static', filename='runes_right.svg') }}');">
 
   <div class="container features" id="anleitungen">
     <article class="card">
