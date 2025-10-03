@@ -8,11 +8,11 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <!-- Favicon + Styles -->
   <link rel="icon" href="{{ url_for('static', filename='logo.png') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <!-- Cache-Buster hochhalten, wenn du wieder änderst: ?v=9, ?v=10, ... -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}?v=9">
 </head>
 <body>
   <header class="topbar">
@@ -24,6 +24,7 @@
         <a href="#builds">Builds</a>
         <a href="{{ url_for('about') }}">Über uns</a>
       </nav>
+
       <a class="btn btn-discord" href="#discord">
         <img src="{{ url_for('static', filename='icon_discord.svg') }}" alt="" aria-hidden="true">
         <span>Zum Discord</span>
