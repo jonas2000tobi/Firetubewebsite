@@ -8,9 +8,8 @@
   radial-gradient(ellipse at center, rgba(255,255,255,.06), rgba(0,0,0,.86) 60%),
   url('{{ url_for('static', filename='hero_bg.png') }}');">
 
-  <!-- Panels wie im Paint (links/rechts, leer, nur Deko – auf Wunsch klickbar) -->
+  <!-- Panels wie im Paint -->
   <div class="hero-panels">
-    <!-- klickbar machen? href anpassen. Oder role="presentation" lassen -->
     <a class="hero-panel left"  href="#anleitungen" aria-label="Anleitungen"></a>
     <a class="hero-panel right" href="#map"         aria-label="Karte"></a>
   </div>
@@ -30,7 +29,7 @@
   </div>
 </section>
 
-<!-- Schnell-Filter wie Buttons -->
+<!-- Schnell-Filter -->
 <nav class="quick-nav container" aria-label="Schnellzugriff">
   <a class="qbtn" href="#guides">Guides</a>
   <a class="qbtn" href="#klassen">Klassen</a>
@@ -38,9 +37,16 @@
   <a class="qbtn" href="#map">Karte</a>
 </nav>
 
-<!-- Kachelreihe -->
-<section class="features-wrap">
-  <div class="container features" id="guides">
+<!-- Feature-Kacheln + Dungeon-BG + Runen -->
+<section
+  class="features-wrap"
+  id="guides"
+  style="
+    --bg-img: url('{{ url_for('static', filename='features_bg.jpg') }}');
+    --runes-left:  url('{{ url_for('static', filename='runes_left.svg') }}');
+    --runes-right: url('{{ url_for('static', filename='runes_right.svg') }}');">
+
+  <div class="container features" id="anleitungen">
     <article class="card">
       <div class="card-icon">
         <img src="{{ url_for('static', filename='icon_swords.svg') }}" alt="">
@@ -80,8 +86,8 @@
       src="https://questlog.gg/throne-and-liberty/en/map"
       loading="lazy"
       referrerpolicy="no-referrer"
-      sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-    ></iframe>
+      sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+    </iframe>
   </div>
 
   <p class="map-fallback">
