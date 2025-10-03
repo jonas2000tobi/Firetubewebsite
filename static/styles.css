@@ -1,168 +1,37 @@
-:root{
-  --bg:#0c0f12; --panel:#0f1318; --text:#eef2f6; --muted:#c2ceda;
-  --gold:#e1c58a; --gold-deep:#b68f45;
-  --line: rgba(255,255,255,.08);
-  --shadow: 0 30px 60px rgba(0,0,0,.55);
-}
-
-/* Basics */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
-  color:var(--text);
-  background:var(--bg);
-}
-.container{width:min(1200px,92vw);margin-inline:auto}
-
-/* Topbar */
-.topbar{
-  position:sticky;top:0;z-index:50;
-  background:linear-gradient(180deg,rgba(2,4,6,.8),rgba(2,4,6,.35));
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--line);
-}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-.menu{display:flex;gap:28px}
-.menu a{color:#d9e2ec;text-decoration:none;font-weight:600;opacity:.85}
-.menu a.active,.menu a:hover{opacity:1}
-
-/* Buttons */
-.btn{display:inline-flex;gap:10px;align-items:center;text-decoration:none;font-weight:700;
-  padding:10px 16px;border-radius:12px;border:1px solid transparent}
-.btn img{width:18px;height:18px}
-.btn-discord{background:#0f1a24;border-color:#1e2a36}
-.btn-gold{background:linear-gradient(180deg,var(--gold),#f2dca7);color:#13110d}
-.btn-dark{background:#0d1116;border:1px solid rgba(255,255,255,.12);color:var(--text)}
-
-/* Hero */
-.hero{
-  position:relative; min-height:64vh;
-  display:flex; align-items:center; justify-content:center;
-  border-bottom:1px solid var(--line);
-  background-position:center center; background-size:cover; background-repeat:no-repeat;
-}
-.hero-inner{text-align:center;padding:72px 0}
-.title{
-  font-family:Cinzel,serif;font-weight:700;letter-spacing:.08em;
-  font-size:clamp(42px,7vw,86px);margin:0;color:var(--gold);
-  text-shadow:0 8px 40px rgba(0,0,0,.85)
-}
-.subtitle{
-  font-family:Cinzel,serif;font-size:clamp(18px,2.6vw,30px);
-  letter-spacing:.25em;margin:.3em 0 0;color:#e8efe9
-}
-.lead{color:#d8e2ee;margin:22px auto 26px;font-size:clamp(16px,1.8vw,20px)}
-.hero-cta{display:flex;gap:14px;justify-content:center}
-
-/* Quick-Links */
-.quick-nav{
-  display:flex; gap:12px; justify-content:center; align-items:center;
-  margin:20px auto 28px; flex-wrap:wrap;
-}
-.qbtn{
-  display:inline-flex; align-items:center; justify-content:center;
-  padding:10px 16px; border-radius:12px;
-  font-weight:800; letter-spacing:.02em;
-  border:1px solid rgba(255,255,255,.12);
-  background:linear-gradient(180deg,rgba(16,20,25,.92),rgba(10,12,14,.92));
-  color:#e9eef4; text-decoration:none;
-  box-shadow:0 6px 16px rgba(0,0,0,.35);
-}
-.qbtn:hover{ transform:translateY(-1px); border-color:rgba(225,197,138,.35) }
-
-/* Einstiegs-Karten (Leiste) */
-.features{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
-  margin:40px auto 80px;position:relative;
-}
-.features::before{
-  content:"";position:absolute;left:50%;transform:translateX(-50%);top:-26px;
-  width:min(1200px,92vw);height:1px;
-  background:linear-gradient(90deg,transparent,rgba(225,197,138,.18),transparent);
-  box-shadow:0 -12px 40px rgba(225,197,138,.35);pointer-events:none;
-}
-.card{
-  position:relative;overflow:hidden;border-radius:18px;
-  padding:28px 24px;text-align:center;
-  background:linear-gradient(180deg,rgba(14,18,23,.95),rgba(11,14,17,.92));
-  border:1px solid rgba(255,255,255,.06);
-  box-shadow:0 10px 30px rgba(0,0,0,.45)
-}
-.card-icon{display:grid;place-items:center;margin-bottom:14px;position:relative}
-.card-icon::before{
-  content:"";width:66px;height:66px;border-radius:50%;
+/* ===== Hintergrund + Ornamente für die Karten-Sektion ===== */
+.features-wrap{
+  position:relative;
+  padding:70px 0 100px;
   background:
-    radial-gradient(70% 70% at 50% 35%, rgba(225,197,138,.26), rgba(225,197,138,0) 60%),
-    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,0));
-  border:1px solid rgba(255,255,255,.08);
-  box-shadow:0 8px 24px rgba(0,0,0,.45), inset 0 2px 10px rgba(255,255,255,.06)
-}
-.card-icon img{position:absolute;inset:0;margin:auto;width:28px;height:28px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
-.icon-flame{position:absolute;inset:0;margin:auto;width:30px;height:30px;border-radius:50%;filter:drop-shadow(0 0 12px rgba(225,197,138,.25))}
-.card h3{font-family:Cinzel,serif;margin:8px 0 8px;color:var(--gold);text-transform:uppercase;letter-spacing:.02em}
-.card p{color:#c9d4df;margin:0}
-
-/* Abschnitt-Header / Chips (falls später genutzt) */
-.home-section{ margin:36px auto 60px }
-.section-head{ display:flex; align-items:end; justify-content:space-between; gap:12px; margin-bottom:14px }
-.section-head h2{
-  font-family:Cinzel,serif; font-weight:700; color:var(--gold); margin:0;
-  letter-spacing:.03em; font-size:clamp(20px,2vw,26px)
-}
-.section-sub{ color:#cbd6e2; margin:0 }
-.chips{ display:flex; gap:8px; flex-wrap:wrap }
-.chip{
-  background:#11161b; border:1px solid rgba(255,255,255,.12);
-  color:#dfe7f1; padding:6px 10px; border-radius:999px; font-weight:700; font-size:13px
-}
-.chip.active, .chip:hover{ border-color:rgba(225,197,138,.4) }
-
-/* Build-Grid (Platzhalter – optional) */
-.build-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px }
-.build-card{
-  position:relative; border-radius:14px; padding:18px;
-  background:linear-gradient(180deg,rgba(18,22,27,.95),rgba(11,14,17,.92));
-  border:1px solid rgba(255,255,255,.08);
-  box-shadow:0 10px 30px rgba(0,0,0,.45)
-}
-.build-meta{ display:flex; justify-content:space-between; align-items:center; margin-bottom:6px }
-.tier{ padding:3px 8px; border-radius:999px; font-weight:800; font-size:12px }
-.tier-meta{ background:rgba(225,197,138,.18); color:var(--gold); border:1px solid rgba(225,197,138,.35) }
-.updated{ color:#aeb9c6; font-size:12px }
-.build-title{ margin:8px 0 2px; font-weight:800; letter-spacing:.02em }
-.build-tags{ margin:0 0 12px; color:#cbd6e2 }
-.build-link{
-  display:inline-flex; align-items:center; gap:8px; text-decoration:none; font-weight:800;
-  border:1px solid rgba(255,255,255,.12); padding:8px 12px; border-radius:10px; color:#eaf1f7
-}
-.build-link:hover{ border-color:rgba(225,197,138,.35) }
-
-/* Updates-Liste (optional) */
-.updates{ list-style:none; padding:0; margin:0 }
-.updates li{ padding:10px 0; border-bottom:1px solid rgba(255,255,255,.06) }
-.updates a{ color:#eaf1f7; text-decoration:none; font-weight:700 }
-.updates a:hover{ text-decoration:underline }
-.u-meta{ color:#9fb0c0; margin-left:10px; font-size:12px }
-
-/* Map (Embed-Test) */
-.map-section{ padding:18px 0 70px; border-top:1px solid rgba(255,255,255,.06) }
-.map-frame{
-  width:min(1200px,94vw); margin:10px auto; border-radius:16px; overflow:hidden;
-  border:1px solid rgba(255,255,255,.08);
-  box-shadow:0 20px 60px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.04);
-  background:#0c1015;
-}
-.map-iframe{ width:100%; height:70vh; border:0; display:block }
-.map-fallback{ text-align:center; color:#cbd6e2; margin-top:10px }
-.map-fallback a{ color:var(--gold) }
-
-/* Responsive */
-@media (max-width:960px){
-  .features{grid-template-columns:1fr}
-  .build-grid{ grid-template-columns:1fr }
+    linear-gradient(180deg, rgba(12,15,18,0) 0%, rgba(12,15,18,0.6) 22%, rgba(12,15,18,0.9) 100%),
+    url('/static/features_bg.jpg') center/cover no-repeat;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  box-shadow: inset 0 40px 80px rgba(0,0,0,.6);
 }
 
-/* Guard: Discord-Icon nie riesig, selbst wenn CSS kurz fehlt */
-header .btn-discord img { width:18px; height:18px; display:inline-block; }
+/* Zierleisten links/rechts – dezente „Zwergen“-Runen */
+.features-wrap::before,
+.features-wrap::after{
+  content:"";
+  position:absolute; top:0; bottom:0; width:90px;
+  pointer-events:none; opacity:.32;
+  filter: drop-shadow(0 0 18px rgba(225,197,138,.15));
+}
+.features-wrap::before{ left:0;  background:url('/static/runes_left.svg') center/contain no-repeat; }
+.features-wrap::after { right:0; background:url('/static/runes_right.svg') center/contain no-repeat; }
+
+/* Auf kleinen Screens ausblenden, damit’s nicht drängt */
+@media (max-width:1200px){
+  .features-wrap::before, .features-wrap::after{ display:none; }
+}
+
+/* Etwas edlere Ränder/Glow für die Karten */
+.card{
+  border:1px solid rgba(225,197,138,.08);
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
+}
+.card::after{
+  content:""; position:absolute; inset:0; border-radius:18px; pointer-events:none;
+  box-shadow: inset 0 0 0 1px rgba(225,197,138,.12), 0 0 32px rgba(225,197,138,.08);
+}
