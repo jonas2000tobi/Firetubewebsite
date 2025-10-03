@@ -75,7 +75,7 @@ body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color
   background-image:
     radial-gradient(1200px 480px at 50% 30%, rgba(225,197,138,.10), rgba(225,197,138,0) 60%),
     linear-gradient(180deg, rgba(12,15,18,0) 0%, rgba(12,15,18,.58) 24%, rgba(12,15,18,.92) 100%),
-    var(--bg-img, url('/static/features_bg.jpg'));  /* Pfad via url_for in index.html */
+    var(--bg-img, url('/static/features_bg.png'));  /* Pfad via url_for in index.html */
   background-size:100% 100%,100% 100%,cover;
   background-position:center,center,center 20%;
   background-repeat:no-repeat;
