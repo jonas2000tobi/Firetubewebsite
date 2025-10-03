@@ -1,4 +1,4 @@
-/* ========== Basis / Variablen ========== */
+/* ===== Variablen ===== */
 :root{
   --bg:#0b0f14;
   --panel:#11161b;
@@ -7,30 +7,44 @@
   --muted:#cbd6e2;
   --gold:#E1C58A;
   --gold-strong:#F0D79E;
-  --gold-soft:#d9c38f;
   --gold-20: rgba(225,197,138,.20);
   --gold-30: rgba(225,197,138,.30);
-  --gold-40: rgba(225,197,138,.40);
-  --ring: rgba(54,154,180,.35);
   --contentMax: 1160px;
   --contentMaxWide: 1240px;
 }
 
-html,body{ background:#0b0f14; color:var(--text); margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif }
+html,body{ margin:0; background:#0b0f14; color:var(--text); font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif }
 
 /* Container */
 .container{ width:min(var(--contentMax), 94vw); margin:0 auto }
 
-/* Topbar / Buttons (deine vorhandenen Regeln bleiben) */
-.topbar{ position:sticky; top:0; z-index:30; background:#0c1116; border-bottom:1px solid rgba(255,255,255,.05) }
-.topbar .nav{ display:flex; align-items:center; justify-content:space-between; padding:12px 0 }
-.menu{ display:flex; gap:22px; align-items:center }
+/* ===== kompakter Header ===== */
+.topbar{
+  position:sticky; top:0; z-index:30;
+  background:rgba(12,17,22,.88);
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.topbar .nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:8px 0;                 /* kleiner */
+  min-height:52px;               /* begrenzt */
+}
+.menu{ display:flex; gap:20px; align-items:center }
 .menu a{ color:#cfe2f2; text-decoration:none; font-weight:700; opacity:.9 }
 .menu a.active,.menu a:hover{ color:#fff }
-.btn{ display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:12px; text-decoration:none; font-weight:800 }
-.btn-dark{ background:#0f141a; border:1px solid rgba(255,255,255,.12); color:#eaf1f7 }
-.btn-gold{ background:linear-gradient(180deg,#f4dca8,#d6b66f); color:#161616; border:0; box-shadow:0 6px 18px rgba(0,0,0,.35) }
-.btn-discord{ background:#0f141a; border:1px solid rgba(255,255,255,.12); color:#eaf1f7; padding:8px 14px; border-radius:14px }
+
+/* Discord im Header klein halten */
+.topbar .btn-discord{ padding:6px 10px; border-radius:12px; font-weight:800; border:1px solid rgba(255,255,255,.12); background:#0f141a; color:#eaf1f7 }
+.topbar .btn-discord img{ width:18px; height:18px }
+
+/* generische Buttons */
+.btn{ display:inline-flex; align-items:center; gap:10px; text-decoration:none }
+.btn-dark{ padding:10px 14px; border-radius:12px; background:#0f141a; border:1px solid rgba(255,255,255,.12); color:#eaf1f7 }
+.btn-gold{
+  padding:12px 18px; border-radius:12px;
+  background:linear-gradient(180deg,#f4dca8,#d6b66f);
+  color:#161616; border:0; box-shadow:0 6px 18px rgba(0,0,0,.35)
+}
 
 /* ===== Hero ===== */
 .hero{
@@ -39,78 +53,71 @@ html,body{ background:#0b0f14; color:var(--text); margin:0; font-family:Inter,sy
   background-position:center top;
   background-size:cover;
   background-repeat:no-repeat;
-  padding:90px 0 40px;
+  padding:120px 0 40px;          /* mehr Platz oben fürs Bild */
+  min-height:560px;              /* stabil: kein Reflow -> kein Autosprung */
   overflow:hidden;
 }
 .hero-inner{ text-align:center }
 .title{
-  font-family:Cinzel,serif;
-  font-weight:700;
-  letter-spacing:.04em;
-  font-size: clamp(38px, 6.6vw, 92px);
+  font-family:Cinzel,serif; font-weight:700; letter-spacing:.04em;
+  font-size: clamp(40px, 6.8vw, 96px);
   color: var(--gold);
-  margin:24px 0 6px;
-  position: relative;
-  display: inline-block;
+  margin:16px 0 6px;
+  position: relative; display: inline-block;
 }
-.title-left{ position:relative; left:-.40em }
-.title-right{ position:relative; right:-1.05em } /* weiter rechts, damit nicht in der Flamme */
-@media (max-width:1200px){ .title-right{ right:-.65em } }
-@media (max-width:640px){  .title-right{ right:-.35em } }
+.title-left{ position:relative; left:-.45em }
+.title-right{ position:relative; right:-1.25em } /* weiter raus, nicht in der Flamme */
+@media (max-width:1200px){ .title-right{ right:-.8em } }
+@media (max-width:800px){  .title-right{ right:-.45em } }
 
 .subtitle{
-  margin:0 0 10px;
-  font-family:Cinzel,serif;
-  letter-spacing:.28em;
-  color:#dcd2b8;
+  margin:2px 0 8px;
+  font-family:Cinzel,serif; letter-spacing:.28em; color:#dcd2b8
 }
 .lead{ color:#cbd6e2; margin:0 0 18px }
 
-/* Side Panels neben dem Titel */
+/* Seiteneinfassungen (weiter außen & tiefer) */
 .side-panels{ position:absolute; inset:0; pointer-events:none }
 .side-panels .panel{
-  position:absolute; top:210px; width:min(520px,38vw); height:180px;
-  border-radius:18px; border:2px solid var(--gold-30);
-  background: radial-gradient(ellipse at center, rgba(255,255,255,.03), rgba(0,0,0,.80) 70%);
+  position:absolute;
+  top: 360px;                          /* deutlich unter Titel */
+  width: min(480px, 36vw);
+  height: 170px;
+  border-radius:18px;
+  border:2px solid var(--gold);        /* Gold wie Titel */
+  background: radial-gradient(ellipse at center, rgba(255,255,255,.02), rgba(0,0,0,.78) 70%);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.04), 0 14px 40px rgba(0,0,0,.45);
 }
-.side-panels .panel.left{ left: max(0px, calc((100vw - var(--contentMax))/2)); margin-left: 0 }
-.side-panels .panel.right{ right: max(0px, calc((100vw - var(--contentMax))/2)); margin-right: 0 }
+.side-panels .panel.left{
+  left: max(0px, calc((100vw - var(--contentMax)) / 2 - 56px));
+}
+.side-panels .panel.right{
+  right: max(0px, calc((100vw - var(--contentMax)) / 2 - 56px));
+}
 
-/* Quick-Links (mitte) */
+/* ===== Quick-Links ===== */
 .quick-nav{ display:flex; gap:12px; justify-content:center; align-items:center; margin:18px auto 24px; flex-wrap:wrap }
 .qbtn{
   display:inline-flex; align-items:center; justify-content:center;
-  padding:10px 16px; border-radius:12px;
-  font-weight:800; letter-spacing:.02em;
+  padding:10px 16px; border-radius:12px; font-weight:800; letter-spacing:.02em;
   border:1px solid rgba(255,255,255,.12);
   background:linear-gradient(180deg,rgba(16,20,25,.92),rgba(10,12,14,.92));
-  color:#e9eef4; text-decoration:none;
-  box-shadow:0 6px 16px rgba(0,0,0,.35);
+  color:#e9eef4; text-decoration:none; box-shadow:0 6px 16px rgba(0,0,0,.35);
 }
-.qbtn:hover{ transform:translateY(-1px); border-color:var(--gold-35) }
+.qbtn:hover{ transform:translateY(-1px); border-color:var(--gold-30) }
 
-/* ===== Abschnitt unter dem Hero – eigenes BG ===== */
+/* ===== Unter dem Hero: eigenes BG ===== */
 .below-hero-bg{
   background:
     radial-gradient(ellipse at center, rgba(255,255,255,.02), rgba(0,0,0,.82) 60%),
     url("hero_bg.png") center top/cover no-repeat,
     #0c1116;
-  padding: 18px 0 40px;
+  padding: 22px 0 46px;
 }
 
-/* ===== Große Karten (Features) ===== */
-.features.container{
-  width: min(var(--contentMaxWide), 96vw);
-  margin: 0 auto;
-}
-
-.features{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  align-items: stretch;
-}
+/* ===== Feature-Karten ===== */
+.features.container{ width: min(var(--contentMaxWide), 96vw); margin: 0 auto }
+.features{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; align-items:stretch }
 
 .card{
   position:relative;
@@ -119,21 +126,18 @@ html,body{ background:#0b0f14; color:var(--text); margin:0; font-family:Inter,sy
   background:linear-gradient(180deg, rgba(18,22,27,.95), rgba(11,14,17,.92));
   border:1px solid rgba(255,255,255,.08);
   box-shadow:0 12px 34px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
-  /* größer: höher & breiter wirken durch min-height */
-  min-height: 340px;              /* <-- HÖHE erhöht */
+  min-height: 360px;                           /* größer */
 }
-
+.card--raised{ transform: translateY(-14px); } /* mittlere höher */
 .card h3{
-  margin: 8px 0 8px;
+  margin: 8px 0 8px; text-align:center;
   font-family:Cinzel,serif; font-weight:700; color:var(--gold);
-  letter-spacing:.02em; font-size:20px; text-align:center;
+  letter-spacing:.02em; font-size:20px;
 }
 .card p{ color:#cbd6e2; margin:0; text-align:center }
-
 .card-icon{
-  width: 88px; height: 88px;      /* größerer Kreis */
-  border-radius: 999px;
-  margin: -44px auto 10px;        /* leicht überlappend nach oben */
+  width: 90px; height: 90px;
+  border-radius: 999px; margin: -46px auto 10px;
   display:grid; place-items:center;
   background: radial-gradient(ellipse at center, rgba(0,0,0,.0), rgba(0,0,0,.65) 70%);
   border:1px solid rgba(255,255,255,.08);
@@ -141,10 +145,9 @@ html,body{ background:#0b0f14; color:var(--text); margin:0; font-family:Inter,sy
 }
 .card-icon img{ width: 42px; height: 42px; opacity:.95 }
 
-/* responsiv – bei kleineren Breiten 1 Spalte */
 @media (max-width: 1080px){
-  .features{ grid-template-columns: 1fr; }
-  .card{ min-height: 300px; }
+  .features{ grid-template-columns:1fr }
+  .card, .card--raised{ min-height: 320px; transform:none }
 }
 
 /* ===== Karte ===== */
@@ -154,9 +157,7 @@ html,body{ background:#0b0f14; color:var(--text); margin:0; font-family:Inter,sy
 .section-sub{ color:#cbd6e2; margin:0 }
 
 .map-frame{
-  width:min(1200px,94vw);
-  margin:10px auto;
-  border-radius:16px; overflow:hidden;
+  width:min(1200px,94vw); margin:10px auto; border-radius:16px; overflow:hidden;
   border:1px solid rgba(255,255,255,.08);
   box-shadow:0 20px 60px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.04);
   background:#0c1015;
