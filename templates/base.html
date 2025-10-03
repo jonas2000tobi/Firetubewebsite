@@ -7,15 +7,14 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <link rel="icon" href="{{ url_for('static', filename='logo.png') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
-<body id="top">
-  <!-- kompakter Header -->
+<body>
   <header class="topbar">
-    <div class="container topbar-inner">
+    <div class="container nav">
       <nav class="menu">
         <a href="{{ url_for('index') }}" class="active">Home</a>
         <a href="#guides">Guides</a>
@@ -23,7 +22,6 @@
         <a href="#builds">Builds</a>
         <a href="{{ url_for('about') }}">Über uns</a>
       </nav>
-
       <a class="btn btn-discord" href="#discord">
         <img src="{{ url_for('static', filename='icon_discord.svg') }}" alt="" aria-hidden="true">
         <span>Zum Discord</span>
@@ -33,6 +31,7 @@
 
   {% block content %}{% endblock %}
 
+  <!-- WICHTIG: unser Script gegen Auto-Scroll & Lazy-Embed -->
   <script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>
