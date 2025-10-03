@@ -2,17 +2,21 @@
 {% block title %}WEISSE FLAMME · THRONE AND LIBERTY{% endblock %}
 
 {% block content %}
-
 <!-- HERO -->
 <section class="hero">
-  <!-- Seitliche Rahmen (werden per CSS tiefer gesetzt) -->
+  <!-- verschiebbare Seitenrahmen -->
   <div class="hero-panels">
-    <a class="hero-panel left"  href="#anleitungen" aria-label="Anleitungen"></a>
-    <a class="hero-panel right" href="#map" aria-label="Karte"></a>
+    <a class="hero-panel left"  id="classes"></a>
+    <a class="hero-panel right" id="builds"></a>
   </div>
 
   <div class="container hero-inner">
-    <h1 class="title">WEISSE FLAMME</h1>
+    <!-- zweigeteilter Titel -->
+    <div class="title-split">
+      <span class="title-left">WEISSE</span>
+      <span class="title-right">FLAMME</span>
+    </div>
+
     <p class="subtitle">THRONE <span class="amp">&amp;</span> LIBERTY</p>
     <p class="lead">Infos, Builds und Guides zu THRONE AND LIBERTY</p>
 
@@ -26,46 +30,48 @@
   </div>
 </section>
 
-<!-- Mittlere Menüleiste -->
-<nav class="quick-nav container" aria-label="Schnellzugriff">
+<!-- Mittlere Nav-Leiste -->
+<nav class="quick-nav" aria-label="Schnellzugriff">
   <a class="qbtn" href="#guides">Guides</a>
   <a class="qbtn" href="#klassen">Klassen</a>
   <a class="qbtn" href="#builds">Builds</a>
   <a class="qbtn" href="#welt">Welt</a>
-  <a class="qbtn" href="#map">Karte</a>
+  <a class="qbtn" href="#map-embed">Karte</a>
 </nav>
 
-<!-- Features-Bereich mit hero_bg als Hintergrund + große Kacheln -->
-<section class="features-wrap" id="guides">
-  <div class="container features" id="anleitungen">
-    <article class="card card--xl">
-      <div class="card-icon">
-        <img src="{{ url_for('static', filename='icon_swords.svg') }}" alt="">
-      </div>
-      <h3>Neuer Spieler?</h3>
-      <p>Hier den Einsteigerguide lesen</p>
-    </article>
+<!-- Features-Bereich (mit hero_bg.png als Hintergrund) -->
+<section class="features-wrap">
+  <div class="container">
+    <section class="features" id="guides">
+      <article class="card">
+        <div class="card-icon">
+          <img src="{{ url_for('static', filename='icon_swords.svg') }}" alt="">
+        </div>
+        <h3>Neuer Spieler?</h3>
+        <p>Hier den Einsteigerguide lesen</p>
+      </article>
 
-    <article class="card card--xl card--raised" id="builds">
-      <div class="card-icon">
-        <img src="{{ url_for('static', filename='logo.png') }}" class="icon-flame" alt="">
-      </div>
-      <h3>Beliebte Builds</h3>
-      <p>Durch die besten Builds stöbern</p>
-    </article>
+      <article class="card card--raised" id="builds">
+        <div class="card-icon">
+          <img src="{{ url_for('static', filename='logo.png') }}" alt="">
+        </div>
+        <h3>Beliebte Builds</h3>
+        <p>Durch die besten Builds stöbern</p>
+      </article>
 
-    <article class="card card--xl">
-      <div class="card-icon">
-        <img src="{{ url_for('static', filename='icon_chat.svg') }}" alt="">
-      </div>
-      <h3>Artikelvorschläge</h3>
-      <p>Verrate uns, was du lesen willst</p>
-    </article>
+      <article class="card">
+        <div class="card-icon">
+          <img src="{{ url_for('static', filename='icon_chat.svg') }}" alt="">
+        </div>
+        <h3>Artikelvorschläge</h3>
+        <p>Verrate uns, was du lesen willst</p>
+      </article>
+    </section>
   </div>
 </section>
 
-<!-- Karte -->
-<section class="container home-section map-section" id="map">
+<!-- Interaktive Karte (Embed) -->
+<section class="container home-section" id="map-embed">
   <div class="section-head">
     <h2>Interaktive Karte</h2>
     <p class="section-sub">Öffnet die Live-Map von Questlog.gg</p>
@@ -76,15 +82,13 @@
       class="map-iframe"
       src="https://questlog.gg/throne-and-liberty/en/map"
       loading="lazy"
-      referrerpolicy="no-referrer"
-      sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+      title="Throne and Liberty Map"
+      referrerpolicy="no-referrer-when-downgrade">
     </iframe>
   </div>
 
   <p class="map-fallback">
-    Falls nichts lädt: Der Anbieter blockt iFrames.
-    <a href="https://questlog.gg/throne-and-liberty/en/map" target="_blank" rel="noopener">Hier im neuen Tab öffnen</a>.
+    Falls die Karte nicht lädt: <a href="https://questlog.gg/throne-and-liberty/en/map" target="_blank" rel="noopener">Hier im neuen Tab öffnen</a>.
   </p>
 </section>
-
 {% endblock %}
