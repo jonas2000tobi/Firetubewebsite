@@ -1,5 +1,3 @@
-// static/main.js
-
 // --- 1) Niemals automatisch irgendwohin springen
 (function hardCancelAutoScroll() {
   try {
@@ -32,29 +30,24 @@
     if (mounted) return;
     mounted = true;
 
-    // iFrame erstellen
     const ifr = document.createElement('iframe');
     ifr.src = src;
     ifr.loading = 'lazy';
     ifr.setAttribute('title', 'Interaktive Karte');
     ifr.setAttribute('tabindex', '-1');         // nicht fokussieren
-    ifr.setAttribute('aria-hidden', 'true');     // der Fokus soll oben bleiben
+    ifr.setAttribute('aria-hidden', 'true');     // Fokus oben halten
     ifr.style.width = '100%';
     ifr.style.height = '100%';
     ifr.style.border = '0';
-    ifr.addEventListener('load', () => {
-      try { ifr.blur(); } catch (e) {}
-    });
+    ifr.addEventListener('load', () => { try { ifr.blur(); } catch (e) {} });
 
-    mount.innerHTML = ''; // Platzhalter entfernen
+    mount.innerHTML = '';
     mount.appendChild(ifr);
   }
 
-  // Button-Click
   const btn = document.getElementById('map-manual-load');
   if (btn) btn.addEventListener('click', injectIframe);
 
-  // Auto laden, wenn in Sicht
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
