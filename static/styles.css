@@ -192,3 +192,18 @@ body{
 .map-iframe{ width:100%; height:70vh; border:0; display:block }
 .map-fallback{ text-align:center; color:#cbd6e2; margin-top:10px }
 .map-fallback a{ color:var(--gold) }
+
+/* === Feinjustierung Titel-Offsets (WEISSE / FLAMME) === */
+.title-left{ left: -0.40em; }
+
+/* FLAMME weiter nach rechts */
+.title-right{ right: -1.05em; }
+
+/* etwas weniger Versatz auf kleineren Screens, damit es nicht übersteht */
+@media (max-width: 1200px){
+  .title-right{ right: -0.65em; }
+}
+@media (max-width: 640px){
+  .title-right{ right: -0.35em; }
+}
+
