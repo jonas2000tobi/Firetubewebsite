@@ -4,20 +4,18 @@
 {% block content %}
 
 <!-- HERO -->
-<section class="hero" style="background-image:
-  radial-gradient(ellipse at center, rgba(255,255,255,.06), rgba(0,0,0,.86) 60%),
-  url('{{ url_for('static', filename='hero_bg.png') }}');">
-
-  <!-- Panels links/rechts -->
+<section class="hero">
+  <!-- Seitliche Rahmen (werden per CSS tiefer gesetzt) -->
   <div class="hero-panels">
     <a class="hero-panel left"  href="#anleitungen" aria-label="Anleitungen"></a>
-    <a class="hero-panel right" href="#map"         aria-label="Karte"></a>
+    <a class="hero-panel right" href="#map" aria-label="Karte"></a>
   </div>
 
   <div class="container hero-inner">
     <h1 class="title">WEISSE FLAMME</h1>
     <p class="subtitle">THRONE <span class="amp">&amp;</span> LIBERTY</p>
     <p class="lead">Infos, Builds und Guides zu THRONE AND LIBERTY</p>
+
     <div class="hero-cta">
       <a class="btn btn-gold" href="#search">Guides durchsuchen</a>
       <a class="btn btn-dark" href="#discord">
@@ -37,15 +35,8 @@
   <a class="qbtn" href="#map">Karte</a>
 </nav>
 
-<!-- Feature-Kacheln mit hero_bg.png als Hintergrund -->
-<section
-  class="features-wrap"
-  id="guides"
-  style="
-    --bg-img: url('{{ url_for('static', filename='hero_bg.png') }}');
-    --runes-left:  url('{{ url_for('static', filename='runes_left.svg') }}');
-    --runes-right: url('{{ url_for('static', filename='runes_right.svg') }}');">
-
+<!-- Features-Bereich mit hero_bg als Hintergrund + große Kacheln -->
+<section class="features-wrap" id="guides">
   <div class="container features" id="anleitungen">
     <article class="card card--xl">
       <div class="card-icon">
@@ -55,7 +46,6 @@
       <p>Hier den Einsteigerguide lesen</p>
     </article>
 
-    <!-- mittlere Kachel leicht angehoben -->
     <article class="card card--xl card--raised" id="builds">
       <div class="card-icon">
         <img src="{{ url_for('static', filename='logo.png') }}" class="icon-flame" alt="">
@@ -74,7 +64,7 @@
   </div>
 </section>
 
-<!-- Interaktive Karte -->
+<!-- Karte -->
 <section class="container home-section map-section" id="map">
   <div class="section-head">
     <h2>Interaktive Karte</h2>
