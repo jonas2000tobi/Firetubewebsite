@@ -5,34 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}WEISSE FLAMME{% endblock %}</title>
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <!-- WICHTIG: korrekter Pfad + Cache-Buster -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}?v=5">
-
-  <!-- Notfall-Micro-CSS: hält Seite nutzbar, falls styles.css mal nicht lädt -->
-  <style>
-    html{scroll-behavior:auto}
-    img{max-width:100%;height:auto}
-    .btn-discord img{width:18px;height:18px;vertical-align:middle}
-    .topbar{background:#0d1116;color:#e9eef4}
-    .menu a{margin-right:.8rem;text-decoration:none;color:#e9eef4}
-    body{background:#0b0f14;margin:0}
-  </style>
+  <link rel="icon" href="{{ url_for('static', filename='logo.png') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+
   <header class="topbar">
-    <div class="container nav" style="display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem">
-      <nav class="menu" style="display:flex;align-items:center;gap:14px">
+    <div class="container nav">
+      <nav class="menu">
         <a href="{{ url_for('index') }}" class="active">Home</a>
         <a href="#guides">Guides</a>
         <a href="#klassen">Klassen</a>
         <a href="#builds">Builds</a>
         <a href="{{ url_for('about') }}">Über uns</a>
       </nav>
-      <a class="btn-discord" href="#discord" style="display:inline-flex;gap:.5rem;align-items:center;padding:.45rem .8rem;background:#0f141a;border-radius:10px;border:1px solid rgba(255,255,255,.08);color:#e9eef4;text-decoration:none">
+
+      <a class="btn btn-discord" href="#discord">
         <img src="{{ url_for('static', filename='icon_discord.svg') }}" alt="" aria-hidden="true">
         <span>Zum Discord</span>
       </a>
@@ -41,7 +34,6 @@
 
   {% block content %}{% endblock %}
 
-  <!-- Anti-Auto-Scroll + Lazy-Embed -->
-  <script src="{{ url_for('static', filename='main.js') }}?v=5" defer></script>
+  <script defer src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>
