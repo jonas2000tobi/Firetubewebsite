@@ -1,5 +1,35 @@
-<!-- vorher: <section class="features container" id="guides"> ... </section> -->
+{% extends 'base.html' %}
+{% block title %}WEISSE FLAMME · THRONE AND LIBERTY{% endblock %}
 
+{% block content %}
+<section class="hero" style="background-image:
+  radial-gradient(ellipse at center, rgba(255,255,255,.06), rgba(0,0,0,.86) 60%),
+  url('{{ url_for('static', filename='hero_bg.png') }}');">
+  <div class="container hero-inner">
+    <h1 class="title">WEISSE FLAMME</h1>
+    <p class="subtitle">THRONE <span class="amp">&amp;</span> LIBERTY</p>
+    <p class="lead">Infos, Builds und Guides zu THRONE AND LIBERTY</p>
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="#search">Guides durchsuchen</a>
+      <a class="btn btn-dark" href="#discord">
+        <img src="{{ url_for('static', filename='icon_discord.svg') }}" alt="" aria-hidden="true">
+        <span>Zum Discord</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<nav class="quick-nav container" aria-label="Schnellzugriff">
+  <a class="qbtn" href="#guides">Guides</a>
+  <a class="qbtn" href="#klassen">Klassen</a>
+  <a class="qbtn" href="#builds">Builds</a>
+  <a class="qbtn" href="#map-embed-test">Karte</a>
+</nav>
+
+<!-- Scroll-Ziel für #klassen -->
+<div id="klassen" style="height:1px"></div>
+
+<!-- Kartenbereich mit Hintergrund + Ornamenten -->
 <section class="features-wrap">
   <div class="features container" id="guides">
     <article class="card">
@@ -27,3 +57,21 @@
     </article>
   </div>
 </section>
+
+<!-- Interaktive Karte – Embed-Test -->
+<section class="container" id="map-embed-test" style="margin:36px auto 60px">
+  <div class="section-head">
+    <h2>Interaktive Karte (Embed-Test)</h2>
+    <p class="section-sub">Wenn der Anbieter Embeds erlaubt, siehst du hier die Karte.</p>
+  </div>
+  <iframe
+    src="https://questlog.gg/throne-and-liberty/en/map"
+    loading="lazy"
+    style="width:100%;height:70vh;border:0;border-radius:16px;display:block;box-shadow:0 20px 60px rgba(0,0,0,.55)">
+  </iframe>
+  <p style="text-align:center;color:#cbd6e2;margin-top:10px">
+    Falls hier nichts erscheint: Der Anbieter blockt iFrames.
+    <a href="https://questlog.gg/throne-and-liberty/en/map" target="_blank" rel="noopener">Im neuen Tab öffnen</a>.
+  </p>
+</section>
+{% endblock %}
