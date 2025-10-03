@@ -2,14 +2,24 @@
 {% block title %}WEISSE FLAMME · THRONE AND LIBERTY{% endblock %}
 
 {% block content %}
-<section class="hero" style="background-image:
-  radial-gradient(ellipse at center, rgba(255,255,255,.06), rgba(0,0,0,.86) 60%),
-  url('{{ url_for('static', filename='hero_bg.png') }}');">
+
+{# ---------------------------------------------
+   HERO — HINTERGRUND hier wechseln (hero_bg.png)
+   -> filename im url_for unten anpassen
+---------------------------------------------- #}
+<section
+  class="hero"
+  style="background-image:
+    radial-gradient(ellipse at center, rgba(255,255,255,.06), rgba(0,0,0,.86) 60%),
+    url('{{ url_for('static', filename='hero_bg.png') }}');">
+
   <div class="container hero-inner">
-    <h1 class="title">
-      <span class="title-left">WEISSE</span>
-      <span class="title-right">FLAMME</span>
+    <h1 class="brand">
+      <span class="w">WEISSE</span>
+      <span class="spacer"></span>
+      <span class="f">FLAMME</span>
     </h1>
+
     <p class="subtitle">THRONE <span class="amp">&amp;</span> LIBERTY</p>
     <p class="lead">Infos, Builds und Guides zu THRONE AND LIBERTY</p>
 
@@ -20,27 +30,35 @@
         <span>Zum Discord</span>
       </a>
     </div>
-  </div>
 
-  <!-- goldene Seiteneinfassungen weiter außen & tiefer -->
-  <div class="side-panels">
-    <div class="panel left"></div>
-    <div class="panel right"></div>
+    <!-- Seitliche Rahmen für Klassen-Module -->
+    <div class="hero-frames" id="klassen">
+      <div class="class-slot"></div>
+      <div class="class-slot"></div>
+    </div>
   </div>
 </section>
 
-<!-- Schnellnavigation -->
-<nav class="quick-nav container" aria-label="Schnellzugriff" id="quick">
+<!-- Quick-Menu mittig -->
+<nav class="quick-nav container" aria-label="Schnellzugriff">
   <a class="qbtn" href="#guides">Guides</a>
   <a class="qbtn" href="#klassen">Klassen</a>
   <a class="qbtn" href="#builds">Builds</a>
-  <a class="qbtn" href="#welt">Welt</a>
+  <a class="qbtn" href="#world">Welt</a>
   <a class="qbtn" href="#map">Karte</a>
 </nav>
 
-<!-- Unter dem Hero eigenes BG + große Karten (mittlere höher) -->
-<section class="below-hero-bg">
-  <div class="container features" id="guides">
+{# ---------------------------------------------
+   FEATURES — HINTERGRUND hier wechseln (hero_bg.png)
+   -> filename im url_for unten anpassen
+---------------------------------------------- #}
+<section
+  class="features-wrap"
+  style="background-image:
+    radial-gradient(ellipse at center, rgba(255,255,255,.04), rgba(0,0,0,.88) 66%),
+    url('{{ url_for('static', filename='hero_bg.png') }}');">
+
+  <div class="features container" id="guides">
     <article class="card">
       <div class="card-icon">
         <img src="{{ url_for('static', filename='icon_swords.svg') }}" alt="">
@@ -49,7 +67,7 @@
       <p>Hier den Einsteigerguide lesen</p>
     </article>
 
-    <article class="card card--raised">
+    <article class="card card-featured" id="builds">
       <div class="card-icon">
         <img src="{{ url_for('static', filename='logo.png') }}" class="icon-flame" alt="">
       </div>
@@ -67,28 +85,30 @@
   </div>
 </section>
 
-<!-- Karte -->
-<section class="container map-section" id="map" aria-labelledby="map-head">
+<!-- Interaktive Karte -->
+<section class="container map-section" id="map">
   <div class="section-head">
-    <h2 id="map-head">Interaktive Karte</h2>
+    <h2>Interaktive Karte</h2>
     <p class="section-sub">Öffnet die Live-Map von Questlog.gg</p>
   </div>
 
   <div class="map-frame">
     <iframe
-      title="Throne and Liberty Map – Questlog.gg"
       src="https://questlog.gg/throne-and-liberty/en/map"
       loading="lazy"
-      tabindex="-1"
       referrerpolicy="no-referrer"
+      tabindex="-1"
+      onload="this.blur()"
       class="map-iframe"
-      sandbox="allow-same-origin allow-scripts"
-    ></iframe>
+      title="Questlog TL Map"
+      allow="clipboard-read; clipboard-write"
+      style="border:0;">
+    </iframe>
   </div>
-
   <p class="map-fallback">
-    Falls hier nichts erscheint: Der Anbieter blockt iFrames.
+    Falls hier nichts erscheint, blockt der Anbieter iFrames.
     <a href="https://questlog.gg/throne-and-liberty/en/map" target="_blank" rel="noopener">Im neuen Tab öffnen</a>.
   </p>
 </section>
+
 {% endblock %}
