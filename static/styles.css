@@ -56,7 +56,35 @@ body{
 .lead{color:#d8e2ee;margin:22px auto 26px;font-size:clamp(16px,1.8vw,20px)}
 .hero-cta{display:flex;gap:14px;justify-content:center}
 
-/* Quick-Links */
+/* ==================== Hero-Panels (wie Paint) ==================== */
+/* Zwei abgerundete Kästen links/rechts, klarer Mittelbereich für den Titel */
+@media (min-width: 1200px){
+  .hero { position: relative; }
+  .hero .container{ position: relative; z-index: 1; }
+
+  .hero .container::before,
+  .hero .container::after{
+    content: "";
+    position: absolute;
+    top: 52%;                                   /* Höhe feinjustierbar: 50–56% */
+    transform: translateY(-50%);
+    width: clamp(360px, 32vw, 520px);           /* Größe wie im Paint */
+    height: clamp(180px, 22vw, 250px);
+    border-radius: 28px;
+    background: linear-gradient(180deg, rgba(12,16,20,.65), rgba(10,12,14,.78));
+    border: 2px solid rgba(160,220,245,.85);    /* hellblauer Rand */
+    box-shadow:
+      0 30px 60px rgba(0,0,0,.55),
+      inset 0 1px 0 rgba(255,255,255,.06),
+      0 0 18px rgba(125,200,245,.25);           /* dezenter Glow */
+    pointer-events: none;
+    z-index: 0;                                  /* hinter dem Hero-Text */
+  }
+  .hero .container::before{ left: 0; }           /* links */
+  .hero .container::after { right: 0; }          /* rechts */
+}
+
+/* Quick-Links unter dem Hero */
 .quick-nav{
   display:flex; gap:12px; justify-content:center; align-items:center;
   margin:20px auto 28px; flex-wrap:wrap;
@@ -171,34 +199,6 @@ body{
 }
 @media (max-width:1300px){
   .features-wrap::before, .features-wrap::after{ display:none; }
-}
-
-/* ========= Sichere Hero-Panels nach Paint (nur >=1200px) ========= */
-/* Willst du sie temporär deaktivieren: den gesamten Block auskommentieren */
-@media (min-width: 1200px){
-  .hero { position: relative; }
-  .hero .container{ position: relative; z-index: 1; }
-
-  .hero .container::before,
-  .hero .container::after{
-    content: "";
-    position: absolute;
-    top: 54%;                         /* ggf. 52–56% feinjustieren */
-    transform: translateY(-50%);
-    width: 480px;
-    height: 220px;
-    border-radius: 24px;
-    background: linear-gradient(180deg, rgba(14,18,23,.86), rgba(10,12,14,.92));
-    border: 1px solid rgba(225,197,138,.18);
-    box-shadow:
-      0 18px 40px rgba(0,0,0,.60),
-      inset 0 0 0 1px rgba(225,197,138,.10),
-      0 0 40px rgba(225,197,138,.06);
-    pointer-events: none;
-    z-index: 0;                       /* hinter dem Hero-Text */
-  }
-  .hero .container::before{ left: 0; }
-  .hero .container::after { right: 0; }
 }
 
 /* Responsive */
