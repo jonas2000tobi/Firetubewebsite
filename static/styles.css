@@ -57,39 +57,52 @@ body{
   position:relative; min-height:64vh;
   display:flex; align-items:center; justify-content:center;
   border-bottom:1px solid var(--line);
+  /* HIER änderst du das Hero-Background (Dateiname in /static) */
   background:
     radial-gradient(ellipse at center, rgba(255,255,255,.06), rgba(0,0,0,.86) 60%),
     url('/static/hero_bg.png');
   background-size:cover; background-position:center;
 }
-.hero-inner{text-align:center;padding:72px 0;position:relative;z-index:2}
-.title{
-  font-family:Cinzel,serif;font-weight:700;letter-spacing:.08em;
-  font-size:clamp(42px,7vw,86px); color:var(--gold); margin:0;
+
+/* Titelbereich – höher + gesplittet */
+.hero-inner{
+  text-align:center;
+  padding:56px 0 72px;     /* etwas höher (weniger Top-Padding) */
+  position:relative; z-index:2;
 }
-.subtitle{margin:.2rem 0 1.2rem; letter-spacing:.25em; color:#d7e0ea}
+
+.title-split{
+  display:flex; align-items:baseline; justify-content:center;
+  gap:36px; transform:translateY(-8px); /* leicht anheben */
+  font-family:Cinzel,serif; font-weight:700; letter-spacing:.08em;
+  font-size:clamp(42px,7vw,86px); color:var(--gold);
+}
+.title-left{ position:relative; left:-0.25em; }   /* WEISSE leicht nach links */
+.title-right{ position:relative; right:-0.25em; } /* FLAMME leicht nach rechts */
+
+.subtitle{margin:.25rem 0 1rem; letter-spacing:.25em; color:#d7e0ea}
 .amp{font-family:inherit}
 .lead{margin:0 0 18px; color:var(--muted)}
 .hero-cta{display:flex;gap:12px;justify-content:center}
 
-/* Seitliche Rahmen (Klassen/Map) – jetzt etwas höher und näher zur Mitte */
+/* Seitliche Rahmen – jetzt gold + etwas höher + näher zur Mitte */
 .hero-panels{position:absolute;inset:0;z-index:1;pointer-events:none}
 .hero-panel{
   position:absolute;
-  top:78%;                         /* vorher 82% → etwas höher */
+  top:76%;                         /* höher gesetzt */
   transform:translateY(-50%);
   width:clamp(380px,32vw,540px);
   height:clamp(200px,24vw,260px);
   border-radius:28px;
   background:linear-gradient(180deg, rgba(12,16,20,.62), rgba(10,12,14,.78));
-  border:2px solid rgba(160,220,245,.85);
+  border:2px solid var(--gold);    /* Gold statt Blau */
   box-shadow:0 30px 60px rgba(0,0,0,.55),
              inset 0 1px 0 rgba(255,255,255,.06),
-             0 0 18px rgba(125,200,245,.25);
+             0 0 22px rgba(225,197,138,.28);
   pointer-events:auto;
 }
-.hero-panel.left{left:5.5%}        /* näher zur Mitte */
-.hero-panel.right{right:5.5%}
+.hero-panel.left{left:6%}
+.hero-panel.right{right:6%}
 @media (max-width:1200px){ .hero-panels{display:none} }
 
 /* ====== Mittlere Menüleiste ====== */
@@ -114,11 +127,11 @@ body{
 .features-wrap{
   position:relative;
   padding:46px 0 110px;
-  /* Overlays deutlich heller, Bild gut sichtbar */
+  /* HIER änderst du das untere Background (Dateiname in /static) */
   background-image:
     radial-gradient(1200px 520px at 50% 8%, rgba(225,197,138,.12), rgba(225,197,138,0) 60%),
     linear-gradient(180deg, rgba(12,15,18,.05) 0%, rgba(12,15,18,.30) 35%, rgba(12,15,18,.78) 100%),
-    url('/static/hero_bg.png');
+    url('/static/hero_bg.png'); /* << Bild */
   background-size:100% 100%,100% 100%,cover;
   background-position:center 6%,center,center top;
   background-repeat:no-repeat;
@@ -126,7 +139,7 @@ body{
   box-shadow: inset 0 50px 100px rgba(0,0,0,.55), inset 0 -60px 120px rgba(0,0,0,.72);
 }
 
-/* große Kacheln, mittlere angehoben */
+/* große Kacheln; mittlere angehoben */
 .features{
   display:grid; grid-template-columns:repeat(3,1fr); gap:36px;
   margin:14px auto 74px; position:relative; z-index:1;
