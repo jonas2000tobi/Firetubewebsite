@@ -1,95 +1,65 @@
+/* ===== Karten-Sektion: stärkerer Dungeon-BG + Vignette/Glow ===== */
+.features-wrap{
+  position:relative;
+  padding:72px 0 110px;
+  background-image:
+    radial-gradient(1200px 480px at 50% 30%, rgba(225,197,138,.08), rgba(225,197,138,0) 60%),
+    linear-gradient(180deg, rgba(12,15,18,0) 0%, rgba(12,15,18,.58) 24%, rgba(12,15,18,.92) 100%),
+    url('/static/features_bg.jpg');
+  background-size: 100% 100%, 100% 100%, cover;
+  background-position: center, center, center 20%;
+  background-repeat: no-repeat;
+  background-blend-mode: soft-light, normal, normal;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  box-shadow:
+    inset 0 60px 120px rgba(0,0,0,.70),
+    inset 0 -60px 120px rgba(0,0,0,.78);
+}
+
+/* ========= Ornamente (schlank, fix an der Containerkante) ========= */
 :root{
-  --bg:#0c0f12; --panel:#0f1318; --text:#eef2f6; --muted:#c2ceda;
-  --gold:#e1c58a; --gold-deep:#b68f45;
-  --line: rgba(255,255,255,.08);
-  --shadow: 0 30px 60px rgba(0,0,0,.55);
+  --orn-w:64px;
+  --orn-offset: calc((100vw - 1200px)/2 - 8px);
+}
+.features-wrap::before,
+.features-wrap::after{
+  content:"";
+  position:absolute; top:36px; bottom:36px;
+  width:var(--orn-w);
+  pointer-events:none;
+  opacity:.28;
+  background-repeat:no-repeat;
+  background-size: var(--orn-w) auto;
+  background-position:center;
+  filter: drop-shadow(0 0 10px rgba(225,197,138,.15));
+  mix-blend-mode: screen;
+}
+.features-wrap::before{
+  left:max(0px, var(--orn-offset));
+  background-image:url('/static/runes_left.svg');
+}
+.features-wrap::after{
+  right:max(0px, var(--orn-offset));
+  background-image:url('/static/runes_right.svg');
 }
 
-/* Basics */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
-  color:var(--text);
-  background:var(--bg);
+/* Ornamente auf kleineren Screens aus */
+@media (max-width:1300px){
+  .features-wrap::before, .features-wrap::after{ display:none; }
 }
-.container{width:min(1200px,92vw);margin-inline:auto}
 
-/* Topbar */
-.topbar{
-  position:sticky;top:0;z-index:50;
-  background:linear-gradient(180deg,rgba(2,4,6,.8),rgba(2,4,6,.35));
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--line);
-}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-.menu{display:flex;gap:28px}
-.menu a{color:#d9e2ec;text-decoration:none;font-weight:600;opacity:.85}
-.menu a.active,.menu a:hover{opacity:1}
-
-/* Buttons */
-.btn{display:inline-flex;gap:10px;align-items:center;text-decoration:none;font-weight:700;
-  padding:10px 16px;border-radius:12px;border:1px solid transparent}
-.btn img{width:18px;height:18px}
-.btn-discord{background:#0f1a24;border-color:#1e2a36}
-.btn-gold{background:linear-gradient(180deg,var(--gold),#f2dca7);color:#13110d}
-.btn-dark{background:#0d1116;border:1px solid rgba(255,255,255,.12);color:var(--text)}
-
-/* Hero */
-.hero{
-  position:relative; min-height:64vh;
-  display:flex; align-items:center; justify-content:center;
-  border-bottom:1px solid var(--line);
-  background-position:center center; background-size:cover; background-repeat:no-repeat;
-}
-.hero-inner{text-align:center;padding:72px 0}
-.title{
-  font-family:Cinzel,serif;font-weight:700;letter-spacing:.08em;
-  font-size:clamp(42px,7vw,86px);margin:0;color:var(--gold);
-  text-shadow:0 8px 40px rgba(0,0,0,.85)
-}
-.subtitle{
-  font-family:Cinzel,serif;font-size:clamp(18px,2.6vw,30px);
-  letter-spacing:.25em;margin:.3em 0 0;color:#e8efe9
-}
-.lead{color:#d8e2ee;margin:22px auto 26px;font-size:clamp(16px,1.8vw,20px)}
-.hero-cta{display:flex;gap:14px;justify-content:center}
-
-/* Quick-Links */
-.quick-nav{
-  display:flex; gap:12px; justify-content:center; align-items:center;
-  margin:20px auto 28px; flex-wrap:wrap;
-}
-.qbtn{
-  display:inline-flex; align-items:center; justify-content:center;
-  padding:10px 16px; border-radius:12px;
-  font-weight:800; letter-spacing:.02em;
-  border:1px solid rgba(255,255,255,.12);
-  background:linear-gradient(180deg,rgba(16,20,25,.92),rgba(10,12,14,.92));
-  color:#e9eef4; text-decoration:none;
-  box-shadow:0 6px 16px rgba(0,0,0,.35);
-}
-.qbtn:hover{ transform:translateY(-1px); border-color:rgba(225,197,138,.35) }
-
-/* Einstiegs-Karten (Leiste) */
-.features{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
-  margin:40px auto 80px;position:relative;
-}
+/* Karten etwas edler/hover */
 .card{
-  position:relative;overflow:hidden;border-radius:18px;
-  padding:28px 24px;text-align:center;
-  background:linear-gradient(180deg,rgba(14,18,23,.95),rgba(11,14,17,.92));
-  border:1px solid rgba(225,197,138,.08);
-  box-shadow:0 10px 30px rgba(0,0,0,.45)
+  border:1px solid rgba(225,197,138,.10);
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
+  transition: transform .18s ease, box-shadow .18s ease;
 }
 .card::after{
   content:""; position:absolute; inset:0; border-radius:18px; pointer-events:none;
-  box-shadow: inset 0 0 0 1px rgba(225,197,138,.12), 0 0 32px rgba(225,197,138,.08);
+  box-shadow: inset 0 0 0 1px rgba(225,197,138,.14), 0 0 32px rgba(225,197,138,.08);
 }
-.card-icon{display:grid;place-items:center;margin-bottom:14px;position:relative}
-.card-icon::before{
-  content:"";width:66px;height:66px;border-radius:50%;
-  background:
-    rad
+.card:hover{
+  transform: translateY(-2px);
+  box-shadow:0 14px 40px rgba(0,0,0,.60);
+}
