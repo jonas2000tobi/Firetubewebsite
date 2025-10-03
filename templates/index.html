@@ -2,6 +2,7 @@
 {% block title %}WEISSE FLAMME · THRONE AND LIBERTY{% endblock %}
 
 {% block content %}
+<!-- HERO bleibt wie gehabt -->
 <section class="hero" style="background-image:
   radial-gradient(ellipse at center, rgba(255,255,255,.06), rgba(0,0,0,.86) 60%),
   url('{{ url_for('static', filename='hero_bg.png') }}');">
@@ -19,6 +20,15 @@
   </div>
 </section>
 
+<!-- Quick-Links: groß und nicht „versteckt“ -->
+<nav class="quick-nav container" aria-label="Schnellzugriff">
+  <a class="qbtn" href="#guides">Guides</a>
+  <a class="qbtn" href="#klassen">Klassen</a>
+  <a class="qbtn" href="#builds">Builds</a>
+  <a class="qbtn" href="#map">Karte</a>
+</nav>
+
+<!-- Deine drei Einstiegs-Karten bleiben -->
 <section class="features container" id="guides">
   <article class="card">
     <div class="card-icon">
@@ -28,7 +38,7 @@
     <p>Hier den Einsteigerguide lesen</p>
   </article>
 
-  <article class="card">
+  <article class="card" id="builds">
     <div class="card-icon">
       <img src="{{ url_for('static', filename='logo.png') }}" class="icon-flame" alt="">
     </div>
@@ -44,4 +54,111 @@
     <p>Verrate uns, was du lesen willst</p>
   </article>
 </section>
+
+<!-- Top-Builds (Platzhalter – echte Daten binden wir später an) -->
+<section id="top-builds" class="home-section container">
+  <div class="section-head">
+    <h2>Top-Builds (aktueller Patch)</h2>
+    <div class="chips">
+      <button class="chip active">Alle</button>
+      <button class="chip">PvE</button>
+      <button class="chip">PvP</button>
+      <button class="chip">Solo</button>
+      <button class="chip">Dungeon</button>
+    </div>
+  </div>
+  <div class="build-grid">
+    <!-- Beispiel-Karten, später via Daten ersetzt -->
+    {% for i in range(1,7) %}
+    <article class="build-card">
+      <div class="build-meta">
+        <span class="tier tier-meta">META</span>
+        <span class="updated">vor 3 Tagen</span>
+      </div>
+      <h3 class="build-title">Waffen-Kombi {{ i }}</h3>
+      <p class="build-tags">Bogen · Dolch · PvE</p>
+      <a class="build-link" href="/guide/{{ i }}">Ansehen</a>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Neu & aktualisiert (Mini-Feed) -->
+<section id="updates" class="home-section container">
+  <div class="section-head">
+    <h2>Neu & aktualisiert</h2>
+  </div>
+  <ul class="updates">
+    <li><a href="#">[Guide] Level-Route 1-50 (überarbeitet)</a> <span class="u-meta">vor 1 Tag</span></li>
+    <li><a href="#">[Build] Speer + Schild (PvP) – Patch X.Y</a> <span class="u-meta">vor 2 Tagen</span></li>
+    <li><a href="#">[Artikel] Regen-Schedule erklärt</a> <span class="u-meta">vor 5 Tagen</span></li>
+  </ul>
+</section>
+
+<!-- Interaktive Karte – IFRAME mit Lazy-Load + Fallback -->
+<section id="map" class="map-section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Interaktive Karte</h2>
+      <p class="section-sub">Finde Dungeons, Portale, Ressourcen u. mehr.</p>
+    </div>
+
+    <div class="map-frame">
+      <!-- ACHTUNG: Wenn der Anbieter Embeds blockt, zeigt der Fallback unterhalb automatisch -->
+      <iframe
+        id="tl-map"
+        class="map-iframe"
+        title="Throne and Liberty Map"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        data-src="https://questlog.gg/throne-and-liberty/en/map">
+      </iframe>
+    </div>
+
+    <p class="map-fallback" id="map-fallback" hidden>
+      Die Karte kann nicht eingebettet werden. <a target="_blank" rel="noopener" href="https://questlog.gg/throne-and-liberty/en/map">Hier im neuen Tab öffnen</a>.
+    </p>
+  </div>
+</section>
+
+<!-- Kleines Script: Iframe lazy-laden + Fallback bei Block -->
+<script>
+(function(){
+  const iframe = document.getElementById('tl-map');
+  const fallback = document.getElementById('map-fallback');
+
+  // Lazy setzen, wenn sichtbar
+  const load = () => {
+    if (!iframe.getAttribute('src')) {
+      iframe.setAttribute('src', iframe.dataset.src);
+    }
+  };
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e => { if (e.isIntersecting) { load(); io.disconnect(); } });
+  }, { rootMargin: '150px' });
+  io.observe(iframe);
+
+  // Fallback, falls blockiert (X-Frame-Options/CSP)
+  iframe.addEventListener('error', () => { fallback.hidden = false; });
+  // „loaded“ aber leer (manche Browser feuern kein error) → kurzer Check
+  iframe.addEventListener('load', () => {
+    // Wenn fremde Seite das Laden verhindert, bleibt oft about:blank
+    try {
+      const blocked = !iframe.contentWindow || !iframe.contentDocument;
+      if (blocked) fallback.hidden = false;
+    } catch (e) {
+      // Cross-origin ok; wenn einfach nur nichts zeigt, lassen wir Fallback stehen, falls bereits sichtbar
+    }
+  });
+
+  // Höhe dynamisch (schönes Viewport-Verhältnis)
+  function size(){
+    const vh = Math.max(600, Math.round(window.innerHeight * 0.7));
+    iframe.style.height = vh + 'px';
+  }
+  size();
+  window.addEventListener('resize', size, { passive:true });
+})();
+</script>
+
 {% endblock %}
